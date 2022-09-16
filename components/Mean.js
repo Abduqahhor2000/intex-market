@@ -1,41 +1,41 @@
 import Image from 'next/image'
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { saveProducts } from '../store/siteDataReducer'
+import axios from 'axios'
+import Section from './Section'
 
 const trueSVG = <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none"><g clipPath="url(#clip0_978_43)"><path d="M12.5 24.2188C18.9721 24.2188 24.2188 18.9721 24.2188 12.5C24.2188 6.02791 18.9721 0.78125 12.5 0.78125C6.02791 0.78125 0.78125 6.02791 0.78125 12.5C0.78125 18.9721 6.02791 24.2188 12.5 24.2188Z" fill="#009398"/><path d="M17.9688 5.46875L9.76562 13.9062L7.03125 11.0938L4.29688 13.9062L9.76562 19.5312L20.7031 8.28125L17.9688 5.46875Z" fill="white"/></g><defs><clipPath id="clip0_978_43"><rect width="25" height="25" fill="white"/></clipPath></defs></svg>
 
 function Mean() {
+    const products = useSelector(state => state.intex.market.products)
+    const dispatch = useDispatch()
+    const categories = useSelector(state => state.intex.market.categories)
+
+    const getProducts = async () => {
+        try{
+          const {data} = await axios({
+            method: "GET",
+            url: "https://market-index.herokuapp.com/api/home/product"
+          })
+          dispatch(saveProducts(data.data))
+          console.log(products)
+        }catch(e){
+          console.log(e)
+        }
+      }
+    
+    useEffect(()=>{
+        getProducts()
+    }, [])
+
   return (
     <div style={{"backgroundColor": "#f0f0f0"}}>
-        <div className='text-center text-5xl text-white font-bold py-5 h-24 mb-20' style={{"backgroundColor":  "rgb(0, 170, 170)", "boxShadow": "0 10px 10px rgba(0, 0, 0, 0.25)"}}>
-            Надувной бассейн
-        </div>
-        <div className='flex justify-center flex-wrap h-auto mb-20 mx-auto' style={{"backgroundColor": "#f0f0f0", "maxWidth": "1150px"}}>
-            <div className="relative overflow-hidden pt-12 m-5 pl-8 pb-7 bg-white rounded-b-3xl  rounded-r-3xl drop-shadow-lg" style={{"width": "340px"}}>
-                <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl' style={{"background": "rgba(19, 157, 75, 1)"}}>Рекомендуем</div>
-                <div className='font-bold text-xl text-center mr-8' style={{"color": "rgb(0, 150, 150)"}}>Metal ramka</div>
-                <Image
-                    src="/product_img.jpg"
-                    alt=""
-                    width={11}
-                    height={5}
-                    layout="responsive"
-                    priority={true}
-                    objectFit='cover'
-                />
-                <div className='flex justify-between mt-4 items-end relative p-r-8'>
-                    <div className='w-full'>
-                        <span className='text-md text-gray-400 relative font-light'>
-                            <span className='absolute h-0.5 w-full bg-red-500 rotate-6 mt-3'></span>
-                            1.400.000 сум
-                        </span>
-                        <div className='text-xl font-bold' style={{"marginTop": "-7px"}}>1.090.000 сум</div>
-                    </div>
-                    <span className='absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl font-semibold mr-9 hover:cursor-pointer' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
-                        Заказать
-                    </span>
-                </div>
-            </div>
-        </div>
+        {categories.map(category => {
+            return(
+                <Section category={category} key={category.id} />
+            )
+        })}
         <div className='h-60 mb-24 px-5 text-center flex flex-col items-center text-white' style={{"background": "rgb(0, 170, 170)"}}>
             <h2 className='mt-6 mb-8 font-bold text-5xl'>
                 Tekin yetkazib berish
