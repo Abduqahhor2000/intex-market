@@ -1,9 +1,12 @@
 import Image from 'next/image'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveProducts } from '../store/siteDataReducer'
 import axios from 'axios'
 import Section from './Section'
+import Consultation from './modalContent/Consultation'
+import { AnimatePresence } from "framer-motion"
+import Modal from './Modal'
 
 const trueSVG = <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none"><g clipPath="url(#clip0_978_43)"><path d="M12.5 24.2188C18.9721 24.2188 24.2188 18.9721 24.2188 12.5C24.2188 6.02791 18.9721 0.78125 12.5 0.78125C6.02791 0.78125 0.78125 6.02791 0.78125 12.5C0.78125 18.9721 6.02791 24.2188 12.5 24.2188Z" fill="#009398"/><path d="M17.9688 5.46875L9.76562 13.9062L7.03125 11.0938L4.29688 13.9062L9.76562 19.5312L20.7031 8.28125L17.9688 5.46875Z" fill="white"/></g><defs><clipPath id="clip0_978_43"><rect width="25" height="25" fill="white"/></clipPath></defs></svg>
 
@@ -11,6 +14,7 @@ function Mean() {
     const products = useSelector(state => state.intex.market.products)
     const dispatch = useDispatch()
     const categories = useSelector(state => state.intex.market.categories)
+    const [consul, setConsul] = useState("")
 
     const getProducts = async () => {
         try{
@@ -41,7 +45,7 @@ function Mean() {
                 Tekin yetkazib berish
             </h2>
             <p className='text-2xl'>{`Toshkent shahri ichida yetkazib berish bepul (shahar tashqarisida yetkazib berish alohida to'lanadi)`}</p>
-            <span className='text-xl text-black pb-1 mt-8 px-10 rounded-3xl font-semibold hover:cursor-pointer' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>Buyurtma berish</span>
+            <span onClick={() => setConsul(true)} className='text-xl text-black pb-1 mt-8 px-10 rounded-3xl font-semibold hover:cursor-pointer' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>Buyurtma berish</span>
         </div>
         <div className='h-24 text-5xl font-bold py-5 text-center' style={{"background": "rgba(226, 239, 239, 1)", "color": "rgb(0, 150, 150)"}}>
             Mijozlarni qadirlash
@@ -55,7 +59,6 @@ function Mean() {
                        width="1"
                        height="1"
                        objectFit='cover'
-                       priority={true}
                        layout="responsive"  
                     />
                 </div>
@@ -73,7 +76,6 @@ function Mean() {
                        height="1"
                        objectFit='cover'
                        layout="responsive"
-                       priority={true}
                     />
                 </div>
                 <div className='w-64'>
@@ -90,7 +92,6 @@ function Mean() {
                        height="1"
                        objectFit='cover'
                        layout="responsive"
-                       priority={true}
                     />
                 </div>
                 <div className='w-48'>
@@ -120,6 +121,14 @@ function Mean() {
                 <span className='flex items-center'><span className='mt-0.5'>{trueSVG}</span> <span>Yuqori sifatli</span></span>
             </div>
         </div>
+        <AnimatePresence>
+            {
+                consul  ?   <Modal setModal={setConsul}>
+                                <Consultation />
+                            </Modal>
+                            : null
+            }
+        </AnimatePresence>
     </div>
   )
 }

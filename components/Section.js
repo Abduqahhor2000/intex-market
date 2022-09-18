@@ -1,14 +1,20 @@
 import React from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import Modal from './Modal'
+import { useState } from 'react'
+import Order from './modalContent/Order'
+import {AnimatePresence} from "framer-motion"
 
 function Section({category}) {
     const lang = useSelector(state => state.intex.market.lang)
     const products = useSelector(state => state.intex.market.products)
+    const [product, setProduct] = useState("")
 
   return (
     <>
-        <div className='text-center text-5xl text-white font-bold py-5 h-24 mb-20' style={{"backgroundColor":  "rgb(0, 170, 170)", "boxShadow": "0 10px 10px rgba(0, 0, 0, 0.25)"}}>
+        <div className='relative text-center text-5xl text-white font-bold py-5 h-24 mb-20' style={{"backgroundColor":  "rgb(0, 170, 170)", "boxShadow": "0 10px 10px rgba(0, 0, 0, 0.25)"}}>
+            <div id={category.id} className="w-full absolute bottom-[172px] duration-300"></div>
             {category.name_uz}
         </div>
         <div className='flex justify-center flex-wrap h-auto mb-20 mx-auto' style={{"backgroundColor": "#f0f0f0", "maxWidth": "1150px"}}>
@@ -32,8 +38,7 @@ function Section({category}) {
                                 alt=""
                                 width={11}
                                 height={5}
-                                layout="responsive"
-                                priority={true}
+                                layout="responsive" 
                                 objectFit='cover'
                             />
                             <div className='flex justify-between mt-4 items-end relative p-r-8'>
@@ -44,7 +49,7 @@ function Section({category}) {
                                     </span>
                                     <div className='text-xl font-bold' style={{"marginTop": "-7px"}}>{product.sale_price} {`so'm`}</div>
                                 </div>
-                                <span className='absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl font-semibold mr-9 hover:cursor-pointer' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
+                                <span onClick={() => setProduct(product)} className='absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl font-semibold mr-9 hover:cursor-pointer' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
                                     Заказать
                                 </span>
                             </div>
@@ -53,6 +58,16 @@ function Section({category}) {
                 })
             }
         </div>
+        <AnimatePresence>
+            {
+                product ? <Modal setModal={setProduct}>
+                            <Order product={product}/>
+                          </Modal>
+                        : null
+            }
+        </AnimatePresence>
+       
+       
     </>
   )
 }
