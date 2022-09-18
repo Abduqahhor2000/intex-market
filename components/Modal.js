@@ -34,7 +34,7 @@ function Modal(props) {
                 y: 0,
                 scale: 1,
                 transition: {
-                    duration: 0.3,
+                    duration: 0.2,
                 }
               }}
             exit={{
@@ -43,7 +43,7 @@ function Modal(props) {
                 y: 0,
                 scale: 0.4,
                 transition: {
-                    duration: 0.2,
+                    duration: 0.1,
                 }
               }}
             className="fixed top-0 left-0 right-0 bottom-0 z-10 m-auto rounded-2xl pt-9 pl-11 pb-11 pr-11" 
