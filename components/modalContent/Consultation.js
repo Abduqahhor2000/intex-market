@@ -2,20 +2,19 @@ import { https } from '../../axios'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
-function Order({product}) {
+function Order() {
     const [response, setResponse] = useState(null)
     const [name, setName] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
 
-    const createConsultation = async () => {
+    const createConsul = async () => {
         try{
-            console.log(product.id, name, phoneNumber)
+            console.log(name, phoneNumber)
 
             const {data} = await https({
                 method: 'post',
                 url: `/api/home/consultation`,
                 data: {
-                    productId: product.id,
                     name,
                     phoneNumber,
                 }
@@ -47,7 +46,7 @@ function Order({product}) {
                     </div>
                     
                     <div className='text-6xl font-bold mb-10'>Спасибо!</div>
-                    <div className='text-2xl mb-16'>Ваш заказ успешно оформлен. Мь свяжемся с вами в ближайшее время.</div>
+                    <div className='text-2xl text-center'>Ваш заказ успешно оформлен. Мь свяжемся с вами в ближайшее время.</div>
                 </div>
             </> :
             response === false ? <>
@@ -79,7 +78,7 @@ function Order({product}) {
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         className='outline-none drop-shadow-lg rounded-2xl w-full h-14 p-5 text-2xl mb-9' 
                         style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
-                    <span onClick={()=> createOrder()} className="font-semibold text-2xl hover:cursor-pointer text-center h-12 w-60 pt-1.5 rounded-xl mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>Заказать</span>
+                    <span onClick={()=> createConsul()} className="font-semibold text-2xl hover:cursor-pointer text-center h-12 w-60 pt-1.5 rounded-xl mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>Заказать</span>
                 </div>
             </>
         }
