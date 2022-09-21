@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        green: {
+          brand: "rgb(0, 150, 150)",
+        }
+      }
     },
     screens:{
       "min_sm": "320px",

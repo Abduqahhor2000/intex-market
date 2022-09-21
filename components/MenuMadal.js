@@ -7,7 +7,7 @@ function MenuModal(props) {
     const setModal = props.setModal
   return (
     <>
-        <motion.dev 
+        <motion.div 
             onClick={() => setModal(false)}
             initial={{
                opacity: 0
@@ -19,9 +19,9 @@ function MenuModal(props) {
                opacity: 0
             }}
             className="fixed h-screen w-screen z-10 top-0 left-0" 
-            style={{"background": "rgba(0, 0, 0, 0.19)", "backdrop-filter": "blur(2px)"}}>
-        </motion.dev>
-        <motion.dev 
+            style={{"background": "rgba(0, 0, 0, 0.19)", "backdropFilter": "blur(2px)"}}>
+        </motion.div>
+        <motion.div 
             initial={{
                 x: -300,
                 y: 0,
@@ -41,7 +41,7 @@ function MenuModal(props) {
             className="fixed top-0 left-0 z-10 h-screen w-72" 
             style={{"background": "#009398"}}
         >
-            <motion.dev
+            <motion.div
                 initial={{
                     
                 }}
@@ -51,8 +51,8 @@ function MenuModal(props) {
                 className="relative w-full h-full"
             >
                 {props.children}
-            </motion.dev>
-        </motion.dev>
+            </motion.div>
+        </motion.div>
     </>
   )
 }

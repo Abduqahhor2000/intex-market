@@ -26,9 +26,9 @@ function Section({category}) {
                     return( 
                         <div key={product.id} className="relative overflow-hidden pt-12 m-4 sm:m-5 pl-8 pb-7 bg-white rounded-b-3xl  rounded-r-3xl drop-shadow-lg" style={{"width": "340px"}}>
                             {
-                                product.status_id === 1 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl' style={{"background": `rgba(38, 177, 69, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
-                              : product.status_id === 2 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl' style={{"background": `rgba(255, 214, 0, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
-                              : product.status_id === 3 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl' style={{"background": `rgba(237, 32, 32, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
+                                product.status_id === 1 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(38, 177, 69, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
+                              : product.status_id === 2 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(255, 214, 0, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
+                              : product.status_id === 3 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(237, 32, 32, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
                               : null
                             }
                             <div className='font-bold text-xl text-center mr-8' style={{"color": "rgb(0, 150, 150)"}}>{product[`frame_${lang.toLowerCase()}`]}</div>
@@ -48,8 +48,8 @@ function Section({category}) {
                                     </span>
                                     <div className='text-xl font-bold' style={{"marginTop": "-7px"}}>{product.sale_price} {lang === "RU" ? "сум" : `so'm`}</div>
                                 </div>
-                                <span onClick={() => setProduct(product)} className='absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl pt-1 font-semibold mr-9 hover:cursor-pointer text-xs' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
-                                    { lang === "RU" ? "Заказать" : "Buyurtma qilish"}
+                                <span onClick={() => setProduct(product)} className={`absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl pt-1 font-semibold mr-9 hover:cursor-pointer text-xs drop-shadow-lg ${product.status_id === 3 ? "hidden" : ""}`} style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
+                                    { lang === "RU" ? "Заказать" : "Buyurtma"}
                                 </span>
                             </div>
                         </div> 

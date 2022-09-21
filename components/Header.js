@@ -18,39 +18,39 @@ const Header = () => {
   const baseInfo = useSelector(state => state.intex.market.baseInfo)
   const dispatch = useDispatch()
 
-  const getCategory = async () => {
-    try{
-      const {data} = await axios({
-        method: "GET",
-        url: "https://market-index.herokuapp.com/api/home/category"
-      })
-      dispatch(saveCategories(data.data))
-      console.log(data)
-    }catch(e){
-      console.log(e)
-    }
-  }
-
-  const getBaseInfo = async () => {
-    try{
-      const {data} = await axios({
-        method: "GET",
-        url: "https://market-index.herokuapp.com/api/home/site"
-      })
-      dispatch(saveBaseInfo(data.data[0]))
-      console.log(data)
-    }catch(e){
-      console.log(e)
-    }
-  }
-
   useEffect(()=>{ 
+    async function getCategory() {
+      try{
+        const {data} = await axios({
+          method: "GET",
+          url: "https://market-index.herokuapp.com/api/home/category"
+        })
+        dispatch(saveCategories(data.data))
+        console.log(data)
+      }catch(e){
+        console.log(e)
+      }
+    }
+  
+    async function getBaseInfo() {
+      try{
+        const {data} = await axios({
+          method: "GET",
+          url: "https://market-index.herokuapp.com/api/home/site"
+        })
+        dispatch(saveBaseInfo(data.data[0]))
+        console.log(data)
+      }catch(e){
+        console.log(e)
+      }
+    }
+
     getCategory()
     getBaseInfo()
-  }, [])
+  }, [dispatch])
 
   return (<>
-    <div className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 min_lg:px-5 xl:px-16 flex justify-between items-center fixed z-10' style={{"backgroundColor" : "rgb(0, 150, 150)"}}>
+    <div className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-2xl' style={{"backgroundColor" : "rgb(0, 150, 150)"}}>
       <div className='text-lg min_md:text-xl font-bold text-white whitespace-nowrap sm:text-2xl' style={{"textShadow": "0 4px 10px rgb(0 0 0 / 25%)"}}>INTEX-MARKET.UZ</div>
       <div className={`${styles.categoryScroll} hidden xl:flex overflow-x-auto items-center text-xl text-white`}>
         {
@@ -63,44 +63,55 @@ const Header = () => {
       </div>
       <div className='flex justify-end items-center sm:ml-7'>
            <span className='hover:cursor-pointer hidden xl:inline-block'><Link href={`tel:${baseInfo.phone_number}`}><a className='text-white text-md font-semibold'>{baseInfo.phone_number}</a></Link></span>        <div className='flex items-center ml-5 justify-between hover:cursor-pointer'>
-           <a href={`tel:${baseInfo.phone_number}`} className='w-6 h-6 inline-block xl:hidden mt-0.5 min_lg:inline-block sm:w-[31px] sm:h-[31px]' rel="noreferrer">
-            <Image 
-              className='hover:cursor-pointer'
-              alt="telegram" 
-              src="/phone_icon.png"
-              width={30}
-              height={30}
-              priority={true}
-              layout="responsive"
-              objectFit="contain"
-           />
-           </a>
-           <a href={baseInfo.telegram_link} className='w-6 h-6 min_lg:inline-block mt-0.5 ml-1.5 min_lg:ml-3 sm:mt-1 sm:w-8 sm:h-8' target="_blank" rel="noreferrer">
-            <Image 
-              className='hover:cursor-pointer'
-              alt="telegram" 
-              src="/telegramicon.png"
-              width={30}
-              height={30}
-              priority={true}
-           />
-           </a>
-           <a href={baseInfo.instagram_link} className='hidden mt-1.5 ml-2.5 sm:inline-block' target="_blank" rel="noreferrer">
-            <Image   
-              className='hover:cursor-pointer'
-              alt="telegram" 
-              src="/instagramicon.png"
-              width={30}
-              height={30}
-              priority={true}
-           />
-           </a>
+           <span className='w-6 h-6 inline-block xl:hidden sm:w-8 sm:h-8 shadow-xl rounded-xl'>
+             <a href={`tel:${baseInfo.phone_number}`} className='inline-block w-full h-full' rel="noreferrer">
+              <Image 
+                className='hover:cursor-pointer'
+                alt="telegram" 
+                src="/phone_icon.png"
+                width={30}
+                height={30}
+                priority={true}
+                layout="responsive"
+                objectFit="contain"
+              />
+             </a>
+           </span>
+          
+           <span className='w-6 h-6 ml-1.5 min_lg:ml-3 sm:w-8 sm:h-8 shadow-xl rounded-xl'>
+              <a href={baseInfo.telegram_link} className='w-full h-full inline-block' target="_blank" rel="noreferrer">
+                <Image 
+                  className='hover:cursor-pointer'
+                  alt="telegram" 
+                  src="/telegramicon.png"
+                  width={30}
+                  height={30}
+                  layout="responsive"
+                  objectFit="cover"
+                  priority={true}
+                />
+              </a>
+           </span>
            
-          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='bg-white rounded-sm hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 mt-0.5 sm:pt-0 sm:pb-1 font-bold w-6 h-6 sm:w-[30px] sm:h-[29px]' style={{"color": " rgb(0, 150, 150)"}}>
+           <span className='hidden sm:inline-block w-6 h-6 ml-2.5 sm:w-8 sm:h-8 shadow-xl rounded-xl'>
+              <a href={baseInfo.instagram_link} className='inline-block w-full h-full' target="_blank" rel="noreferrer">
+               <Image   
+                 className='hover:cursor-pointer'
+                 alt="telegram" 
+                 src="/instagramicon.png"
+                 width={30}
+                 height={30}
+                 layout="responsive"
+                 objectFit="cover"
+                 priority={true}
+              />
+              </a>
+           </span>
+          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded-md bg-white rounded-sm hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 sm:pt-0.5 font-bold w-6 h-6 sm:w-[32px] sm:h-[31px]' style={{"color": " rgb(0, 150, 150)"}}>
             {lang === "UZ" ? "RU" : "UZ"}
           </div>
 
-          <div onClick={()=> setIsMenuOpen(true)} className='ml-4 min_lg:ml-5 hover:cursor-pointer xl:hidden w-6 h-6 sm:w-[30px] sm:h-[30px]'>
+          <div onClick={()=> setIsMenuOpen(true)} className='ml-4 min_lg:ml-5 sm:mr-5 hover:cursor-pointer xl:hidden w-6 h-6 sm:w-[30px] sm:h-[30px]'>
             {menu_icon}
           </div>
         </div> 

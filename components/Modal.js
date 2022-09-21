@@ -7,7 +7,7 @@ function Modal(props) {
     const setModal = props.setModal
   return (
     <>
-        <motion.dev 
+        <motion.div 
             onClick={() => setModal("")}
             initial={{
                opacity: 0
@@ -19,9 +19,9 @@ function Modal(props) {
                opacity: 0
             }}
             className="fixed h-screen w-screen z-10 top-0 left-0" 
-            style={{"background": "rgba(0, 0, 0, 0.19)", "backdrop-filter": "blur(2px)"}}>
-        </motion.dev>
-        <motion.dev 
+            style={{"background": "rgba(0, 0, 0, 0.19)", "backdropFilter": "blur(2px)"}}>
+        </motion.div>
+        <motion.div 
             initial={{
                 opacity: 0,
                 x: 0,
@@ -49,7 +49,7 @@ function Modal(props) {
             className="fixed top-0 left-0 right-0 bottom-0 z-10 m-auto rounded-2xl pt-9 pl-11 pb-6 pr-11" 
             style={{"maxWidth": "fit-content" ,"maxHeight": "fit-content", "background": "rgba(248, 248, 248, 1)"}}
         >
-            <motion.dev
+            <motion.div
                 initial={{
                     
                 }}
@@ -58,10 +58,10 @@ function Modal(props) {
                 }}
                 className="relative"
             >
-                <span onClick={() => setModal("")} className='absolute top-[-22px] right-[-32px] xl:top-0 xl:right-0 z-20 w-6 h-6 xl:w-8 xl:h-8 hover:cursor-pointer top-[-14px] right-[-12px]'>{exit_icon}</span>
+                <span onClick={() => setModal("")} className='absolute top-[-20px] right-[-30px] xl:top-0 xl:right-0 z-20 w-5 h-5 xl:w-8 xl:h-8 hover:cursor-pointer'>{exit_icon}</span>
                 {props.children}
-            </motion.dev>
-        </motion.dev>
+            </motion.div>
+        </motion.div>
     </>
   )
 }

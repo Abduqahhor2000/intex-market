@@ -1,22 +1,175 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import Link from 'next/link'
+import { https } from '../axios'
+import { AnimatePresence } from "framer-motion"
+import Modal from './Modal'
+import FooterConsulModal from './modalContent/FooterConsulModal'
+import { Formik } from 'formik';
 
 const oclock_icon = <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 34 34" fill="none"><g clipPath="url(#clip0_978_75)"><path d="M17 0C7.61016 0 0 7.61016 0 17C0 26.3898 7.61016 34 17 34C26.3898 34 34 26.3898 34 17C34 7.61016 26.3898 0 17 0ZM17 31.1645C9.17734 31.1645 2.83555 24.8227 2.83555 17C2.83555 9.17734 9.17734 2.83555 17 2.83555C24.8227 2.83555 31.1645 9.17734 31.1645 17C31.1645 24.8227 24.8227 31.1645 17 31.1645ZM18.4145 5.66445H15.5789V17L21.9539 23.375L24.0789 21.25L18.4145 15.5855V5.66445Z" fill="white"/></g><defs><clipPath id="clip0_978_75"><rect width="34" height="34" fill="white"/></clipPath></defs></svg>
 
 function Footer() {
     const baseInfo = useSelector(state => state.intex.market.baseInfo)
     const lang = useSelector(state => state.intex.market.lang)
+    const [name, setName] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
+    const [response, setResponse] = useState("")
+
+    const createConsul = async () => {
+        try{
+            console.log(name, phoneNumber)
+
+            const {data} = await https({
+                method: 'post',
+                url: `/api/home/consultation`,
+                data: {
+                    name,
+                    phoneNumber,
+                }
+            })
+
+            console.log(data)
+            setResponse(true)
+        } catch(e){
+            console.log(e)
+            setResponse(false)
+        }
+    }
+
+    const onfocusPhoneNumber = () => {
+        if (phoneNumber === "") {
+          setPhoneNumber(`+998 `);
+        } else {
+          setPhoneNumber(phoneNumber);
+        }
+    };
+
+    const CantrolPhoneNumber = (number) => {
+        if(number === ""){
+            setPhoneNumber("")
+        }
+
+        const num = number.split(" ").join("").split("").pop()
+        let success = false
+        let dfdf = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+"]
+        for (let i = 0; i < dfdf.length; i++){
+            if(dfdf[i] === num) {
+                success = true
+            }
+        }
+        if(!success){
+            return;
+        }
+        
+        let arrNumber = number.split(" ").join("").split("");
+
+        if (arrNumber.length < 5) {
+          setPhoneNumber(number);
+          return;
+        }
+    
+        let justBaseNumber = [];
+    
+        if (arrNumber.slice(0, 4).join("") === "+998") {
+          justBaseNumber = arrNumber.slice(4, arrNumber.length);
+        } else if (arrNumber.slice(0, 3).join("") === "+99") {
+          justBaseNumber = arrNumber.slice(3, arrNumber.length);
+        } else if (arrNumber.slice(0, 2).join("") === "+9") {
+          justBaseNumber = arrNumber.slice(2, arrNumber.length);
+        } else if (arrNumber.slice(0, 1).join("") === "+") {
+          justBaseNumber = arrNumber.slice(1, arrNumber.length);
+        } else {
+          justBaseNumber = arrNumber.slice(0, arrNumber.length);
+        }
+
+        let newNumber = `+998 `;
+
+        for (let i = 0; i < justBaseNumber.length; i++) {
+          if (i === 2 || i === 5 || i === 7) {
+            newNumber += ` ${justBaseNumber[i]}`;
+          } else {
+            newNumber += `${justBaseNumber[i]}`;
+          }
+        }
+
+        setPhoneNumber(newNumber)
+    }
+
     
   return (
     <div className='py-3' style={{"background": "rgb(0, 150, 150)"}}>
         <div className='mx-auto flex flex-wrap items-start justify-center lg:justify-between px-5 max-w-[1120px]'>
             <div className='flex flex-col items-center w-full sm:w-80 mx-0 min_md:mx-5 min_lg:mx-20 sm:mx-32 md:mx-52 lg:mx-0 mb-10 lg:mb-0'>
                 <h2 className='leading-7 mb-4 text-xl sm:text-2xl text-center mx-5 font-semibold text-white'>{lang === "RU" ? "Получить бесплатную консультацию" : "Bepul konsultatsiya olish"}</h2>
-                <input placeholder='' className='mb-5 w-full text-xl h-10 rounded-lg'/>
-                <input placeholder='' className='mb-5 w-full text-xl h-10 rounded-lg'/>
-                <span className='h-9 pt-2 min_sm:pt-1.5 px-5 text-xs min_sm:text-sm sm:px-10 rounded-lg font-semibold hover:cursor-pointer' style={{"background": "rgba(255, 230, 0, 1)"}}>{ lang === "RU" ? "Хочу проконсультироваться" : "Konsultatsiya olish"}</span>
+                <Formik
+                    initialValues={{ name: '', phoneNumber: ''}}
+                    validate={() => {
+                        const errors = {};
+                        if (!name) {
+                          errors.name = "Maydonni to'ldiring!";
+                        } else if (name.length < 4) {
+                        errors.name = "To'liq ismingizni yozing!";
+                      }
+                      if (!phoneNumber) {
+                          errors.phoneNumber = "Maydonni to'ldiring!";
+                      } else if (phoneNumber.length < 17) {
+                        errors.phoneNumber = "To'liq raqamingizni yozing!";
+                      }
+
+                      return errors;
+                    }}
+                    onSubmit={(values, { setSubmitting }) => {
+                        createConsul()
+                        setSubmitting(false);
+                    }}
+                  >
+                    {({
+                      errors,
+                      touched,
+                      handleChange,
+                      handleBlur,
+                      handleSubmit,
+                      isSubmitting,
+                      /* and other goodies */
+                    }) => (
+                        <form onSubmit={handleSubmit} className="w-full">
+                            
+                        <div className="relative mb-6">
+                            <input 
+                                value={name}
+                                onChange={(e) => {setName(e.target.value); handleChange}}
+                                onBlur={handleBlur}
+                                type="text"
+                                name="name"
+                                required
+                                className={`peer outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
+                            <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
+                            <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
+                        </div>
+                        <div className="relative">
+                            <input 
+                                value={phoneNumber}
+                                onChange={(e) => {CantrolPhoneNumber(e.target.value); handleChange}}
+                                onFocus={() => onfocusPhoneNumber()}
+                                onBlur={handleBlur}
+                                name="phoneNumber"
+                                type="text"
+                                maxLength={17}
+                                required
+                                className={`peer outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
+                                style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
+                            <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
+                            <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
+                        </div>
+                        <button type="submit" disabled={isSubmitting} className="h-9 pt-2 min_sm:pt-1.5 px-5 sm:px-10 font-semibold text-xs min_sm:text-sm hover:cursor-pointer text-center py-1 rounded-lg flex mt-8 mx-auto drop-shadow-lg" style={{"background" : "rgba(255, 230, 0, 1)"}}>
+                          { lang === "RU" ? "Хочу проконсультироваться" : "Konsultatsiya olish"}
+                        </button>
+                      </form>
+                    )}
+                </Formik>
             </div>
             <div className='w-1/2 md:w-64 text-white text-xl'>
                 <span className='flex items-center font-semibold text-base sm:text-xl text-white'><span className='mr-3'>{oclock_icon}</span> <span>{ lang === "RU" ? "Рабочее время" : "Ish vaqti"}</span></span>
@@ -42,7 +195,7 @@ function Footer() {
                           height={60}
                           layout={"responsive"}
                           objectFit={"continue"}
-                       />
+                        />
                     </a>
                     <a href={baseInfo.instagram_link} className='inline-block w-10 min_lg:w-16 h-10 min_lg:h-16 mt-1.5' target="_blank" rel="noreferrer">
                         <Image   
@@ -64,7 +217,14 @@ function Footer() {
                 <div className="font-semibold sm:text-sm mt-5">Разработано в Support Solutions. Все права защищены.</div>
             </div>
         </div>
-       
+        <AnimatePresence>
+            {
+                response !== ""  ?  <Modal setModal={setResponse}>
+                                        <FooterConsulModal response={response} />
+                                    </Modal>
+                                 :  null
+            }
+        </AnimatePresence>
     </div>
   )
 }

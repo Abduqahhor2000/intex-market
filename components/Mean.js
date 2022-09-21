@@ -12,27 +12,27 @@ const trueSVG = <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" v
 
 function Mean() {
     const lang = useSelector(state => state.intex.market.lang)
-    const products = useSelector(state => state.intex.market.products)
     const dispatch = useDispatch()
     const categories = useSelector(state => state.intex.market.categories)
     const [consul, setConsul] = useState("")
 
-    const getProducts = async () => {
-        try{
-          const {data} = await axios({
-            method: "GET",
-            url: "https://market-index.herokuapp.com/api/home/product"
-          })
-          dispatch(saveProducts(data.data))
-          console.log(products)
-        }catch(e){
-          console.log(e)
-        }
-      }
+    
     
     useEffect(()=>{
+        async function getProducts() {
+            try{ 
+              const {data} = await axios({
+                method: "GET",
+                url: "https://market-index.herokuapp.com/api/home/product"
+              })
+              dispatch(saveProducts(data.data))
+              console.log(data)
+            }catch(e){
+              console.log(e)
+            }
+          }
         getProducts()
-    }, [])
+    }, [dispatch])
 
   return (
     <div style={{"backgroundColor": "#f0f0f0"}}>
@@ -46,7 +46,7 @@ function Mean() {
                 {lang === "RU" ? "Бесплатная доставка" : "Tekin yetkazib berish"}
             </h2>
             <p className='text-sm sm:text-2xl'>{lang === "RU" ? "Бесплатная доставка осуществляется в пределах города Ташкент (за пределами города доставка оплачивается отдельно)" : `Toshkent shahri ichida yetkazib berish bepul (shahar tashqarisida yetkazib berish alohida to'lanadi)`}</p>
-            <span onClick={() => setConsul(true)} className='text-md sm:text-xl text-black pb-1 mt-6 sm:mt-8 px-10 rounded-3xl font-semibold hover:cursor-pointer' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>{lang === "RU" ? "Оформить заказ" : "Buyurtma berish"}</span>
+            <span onClick={() => setConsul(true)} className='text-md sm:text-xl text-black pb-1 mt-6 sm:mt-8 px-10 rounded-3xl font-semibold hover:cursor-pointer drop-shadow-lg' style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>{lang === "RU" ? "Оформить заказ" : "Buyurtma berish"}</span>
         </div>
         <div className='sm:h-24 text-2xl sm:text-5xl font-bold py-5 text-center' style={{"background": "rgba(226, 239, 239, 1)", "color": "rgb(0, 150, 150)"}}>
         {lang === "RU" ? "Ценности наших клиентов" : "Mijozlarni qadirlash"}
@@ -115,11 +115,11 @@ function Mean() {
                     {lang === "RU" ? "Бассейны от intex отличаются обширным перечнем преимуществ, из которых можно выделить самые важные:" 
                                    : `Intex Basseynlari afzalliklarning kengligi bilan ajralib turadi, quyida ulardan eng muhimlarini ajratib ko'rsatish mumkin:`}
                 </p>
-                <span className='flex items-center mt-4'><span className='mt-0.5'>{trueSVG}</span> <span>{lang === "RU" ? "Прочность" : "Chidamlilik oson"}</span></span>
-                <span className='flex items-center'><span className='mt-0.5'>{trueSVG}</span> <span>{lang === "RU" ? "Простота установки" : `O'rnatish uchun oson`}</span></span>
-                <span className='flex items-center'><span className='mt-0.5'>{trueSVG}</span> <span>{lang === "RU" ? "Красивые и ярки цвета" : "Chiroyli va yorqin ranglar"}</span></span>
-                <span className='flex items-center'><span className='mt-0.5'>{trueSVG}</span> <span>{lang === "RU" ? "Стильный дизайн" : "Zamonaviy dizayn"}</span></span>
-                <span className='flex items-center'><span className='mt-0.5'>{trueSVG}</span> <span>{lang === "RU" ? "Высокое качество" : "Yuqori sifatli"}</span></span>
+                <span className='flex items-center mt-4'><span className='mt-0.5 mr-1'>{trueSVG}</span> <span>{lang === "RU" ? "Прочность" : "Chidamlilik oson"}</span></span>
+                <span className='flex items-center'><span className='mt-0.5 mr-1'>{trueSVG}</span> <span>{lang === "RU" ? "Простота установки" : `O'rnatish uchun oson`}</span></span>
+                <span className='flex items-center'><span className='mt-0.5 mr-1'>{trueSVG}</span> <span>{lang === "RU" ? "Красивые и ярки цвета" : "Chiroyli va yorqin ranglar"}</span></span>
+                <span className='flex items-center'><span className='mt-0.5 mr-1'>{trueSVG}</span> <span>{lang === "RU" ? "Стильный дизайн" : "Zamonaviy dizayn"}</span></span>
+                <span className='flex items-center'><span className='mt-0.5 mr-1'>{trueSVG}</span> <span>{lang === "RU" ? "Высокое качество" : "Yuqori sifatli"}</span></span>
             </div>
         </div>
         <AnimatePresence>
