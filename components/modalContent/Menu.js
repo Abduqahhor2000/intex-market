@@ -31,9 +31,9 @@ function Menu({setIsMenuOpen}) {
           }
         </div>
         <div className='px-6'> 
-            <div className='w-full shadow-xl rounded-xl text-center text-xl text-white font-bold mb-7' style={{"backgroundColor": "rgba(19, 157, 75, 1)"}}><a href={`tel:${baseInfo.phone_number}`} className="flex items-center py-3.5 pl-10"><span className='mr-4'>{phone_icon}</span><span className='mb-1'>Позвонить</span></a></div>  
-            <div className='bg-white shadow-xl w-full rounded-xl text-center text-xl text-white font-bold mb-7' style={{"color": "rgba(0, 147, 152, 1)"}}><a href={baseInfo.telegram_link} target="_blank" rel="noreferrer" className="flex items-center py-3.5 pl-10"><span className='mr-4'>{telegram_icon}</span><span className='mb-1'>Телеграм</span></a></div>  
-            <div className='bg-white shadow-xl w-full rounded-xl text-center text-xl text-white font-bold' style={{"color": "rgba(0, 147, 152, 1)"}}> <a href={baseInfo.instagram_link} target="_blank" rel="noreferrer" className="flex items-center py-2 pl-9"><span className='mr-2.5 w-10 h-10'>{instagram_icon}</span><span className='mb-1'>Инстаграм</span></a></div>  
+            <div className='w-full shadow-xl rounded-xl text-center text-xl text-white font-bold mb-7' style={{"backgroundColor": "rgba(19, 157, 75, 1)"}}><a href={`tel:${baseInfo.phone_number}`} className="flex items-center py-3.5 pl-10"><span className='mr-4'>{phone_icon}</span><span className='mb-1'>{lang === "RU" ? "Позвонить" : "Qo'ng'iroq"}</span></a></div>  
+            <div className='bg-white shadow-xl w-full rounded-xl text-center text-xl text-white font-bold mb-7' style={{"color": "rgba(0, 147, 152, 1)"}}><a href={baseInfo.telegram_link} target="_blank" rel="noreferrer" className="flex items-center py-3.5 pl-10"><span className='mr-4'>{telegram_icon}</span><span className='mb-1'>{lang === "RU" ? "Телеграм" : "Telegram"}</span></a></div>  
+            <div className='bg-white shadow-xl w-full rounded-xl text-center text-xl text-white font-bold' style={{"color": "rgba(0, 147, 152, 1)"}}> <a href={baseInfo.instagram_link} target="_blank" rel="noreferrer" className="flex items-center py-2 pl-9"><span className='mr-2.5 w-10 h-10'>{instagram_icon}</span><span className='mb-1'>{lang === "RU" ? "Инстаграм" : "Instagram"}</span></a></div>  
         </div>                         
     </div>
   )

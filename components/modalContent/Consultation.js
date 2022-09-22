@@ -95,7 +95,7 @@ function Consultation() {
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
-                    <div className="w-32 h-32 xl:w-60 xl:h-60 mb-10">
+                    <div className="w-28 h-28 xl:w-60 xl:h-60 mb-10">
                         <Image 
                             src="/true_icon.png"
                             alt=""
@@ -126,21 +126,21 @@ function Consultation() {
                         objectFit="contain"
                     />
                 </div>
-                <div className='text-2xl md:text-3xl text-center font-semibold mb-5  md:mb-7'>{lang === "RU" ? "Получить консультацию" : "Maslahat olish"}</div>
+                <div className='text-xl md:text-3xl text-center font-semibold mb-5  md:mb-7'>{lang === "RU" ? "Получить консультацию" : "Maslahat olish"}</div>
                 <div className='w-full flex flex-col'>
                 <Formik
                     initialValues={{ name: '', phoneNumber: ''}}
                     validate={() => {
                       const errors = {};
                       if (!name) {
-                          errors.name = "Maydonni to'ldiring!";
+                          errors.name = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
                       } else if (name.length < 4) {
-                        errors.name = "To'liq ismingizni yozing!";
+                        errors.name = lang === "RU" ? "Напиши свое полное имя!" : "To'liq ismingizni yozing!";
                       }
                       if (!phoneNumber) {
-                          errors.phoneNumber = "Maydonni to'ldiring!";
+                          errors.phoneNumber = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
                       } else if (phoneNumber.length < 17) {
-                        errors.phoneNumber = "To'liq raqamingizni yozing!";
+                        errors.phoneNumber = lang === "RU" ? "Напиши свой полный номер!" : "To'liq raqamingizni yozing!";
                       }
 
                       return errors;
@@ -171,7 +171,7 @@ function Consultation() {
                                 className={`peer outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl mb-3 md:mb-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                             <span className='absolute top-2 md:top-3 left-6 text-lg md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-6 peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
-                            <span className={`absolute text-xs md:text-base -translate-y-3.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
+                            <span className={`absolute text-xs md:text-base -translate-y-3.5 md:-translate-y-6 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                         </div>
                         <div className="relative mt-3 w-full">
                             <input 
@@ -189,7 +189,7 @@ function Consultation() {
                             <span className={`absolute text-xs md:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                         </div>
                         <button type="submit" disabled={isSubmitting} className="font-semibold text-lg md:text-2xl hover:cursor-pointer text-center py-1 md:px-5 px-5 rounded-xl flex mt-8 mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>
-                          { lang === "RU" ? "Хочу проконсультироваться" : "Konsultatsiya olish"}
+                          { lang === "RU" ? "Заказать" : "Buyurtmalash"}
                         </button>
                       </form>
                     )}

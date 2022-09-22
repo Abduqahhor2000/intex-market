@@ -10,7 +10,7 @@ function FooterConsulModal({response}) {
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
-                    <div className="w-60 h-60 mb-10">
+                    <div className="w-32 h-32 xl:w-60 xl:h-60 mb-10">
                         <Image 
                             src="/true_icon.png"
                             alt=""

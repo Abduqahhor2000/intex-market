@@ -106,18 +106,18 @@ function Footer() {
                 <Formik
                     initialValues={{ name: '', phoneNumber: ''}}
                     validate={() => {
-                        const errors = {};
-                        if (!name) {
-                          errors.name = "Maydonni to'ldiring!";
-                        } else if (name.length < 4) {
-                        errors.name = "To'liq ismingizni yozing!";
+                      const errors = {};
+                      if (!name) {
+                          errors.name = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
+                      } else if (name.length < 4) {
+                        errors.name = lang === "RU" ? "Напиши свое полное имя!" : "To'liq ismingizni yozing!";
                       }
                       if (!phoneNumber) {
-                          errors.phoneNumber = "Maydonni to'ldiring!";
+                          errors.phoneNumber = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
                       } else if (phoneNumber.length < 17) {
-                        errors.phoneNumber = "To'liq raqamingizni yozing!";
+                        errors.phoneNumber = lang === "RU" ? "Напиши свой полный номер!" : "To'liq raqamingizni yozing!";
                       }
-
+                      
                       return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {

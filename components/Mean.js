@@ -7,6 +7,7 @@ import Section from './Section'
 import Consultation from './modalContent/Consultation'
 import { AnimatePresence } from "framer-motion"
 import Modal from './Modal'
+import styles from "../styles/Home.module.css"
 
 const trueSVG = <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none"><g clipPath="url(#clip0_978_43)"><path d="M12.5 24.2188C18.9721 24.2188 24.2188 18.9721 24.2188 12.5C24.2188 6.02791 18.9721 0.78125 12.5 0.78125C6.02791 0.78125 0.78125 6.02791 0.78125 12.5C0.78125 18.9721 6.02791 24.2188 12.5 24.2188Z" fill="#009398"/><path d="M17.9688 5.46875L9.76562 13.9062L7.03125 11.0938L4.29688 13.9062L9.76562 19.5312L20.7031 8.28125L17.9688 5.46875Z" fill="white"/></g><defs><clipPath id="clip0_978_43"><rect width="25" height="25" fill="white"/></clipPath></defs></svg>
 
@@ -15,8 +16,7 @@ function Mean() {
     const dispatch = useDispatch()
     const categories = useSelector(state => state.intex.market.categories)
     const [consul, setConsul] = useState("")
-
-    
+    const products = useSelector(state => state.intex.market.products) 
     
     useEffect(()=>{
         async function getProducts() {
@@ -36,11 +36,22 @@ function Mean() {
 
   return (
     <div style={{"backgroundColor": "#f0f0f0"}}>
-        {categories.map(category => {
-            return(
-                <Section category={category} key={category.id} />
-            )
-        })}
+        {
+            categories.length && products.length ? <>
+                    {categories.map(category => {
+                        return(
+                            <Section category={category} key={category.id} />
+                        )
+                    })}
+               </>
+            :   <div className='bg-white flex justify-center'>
+                    <div className={styles.loadingiospinnerellipsisn40531yovd8}>
+                        <div className={styles.ldioj52hdie2gm}>
+                            <div></div><div></div><div></div><div></div><div></div>
+                        </div>
+                    </div>
+                </div> 
+        }
         <div className='mb-10 sm:mb-24 px-5 pb-7 sm:pb-8 text-center flex flex-col items-center text-white' style={{"background": "rgb(0, 170, 170)"}}>
             <h2 className='mt-5 sm:mt-6 mb-4 sm:mb-8 font-bold text-2xl sm:text-5xl'>
                 {lang === "RU" ? "Бесплатная доставка" : "Tekin yetkazib berish"}

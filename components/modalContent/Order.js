@@ -144,19 +144,19 @@ function Order({product}) {
                             validate={() => {
                               const errors = {};
                               if (!name) {
-                                  errors.name = "Maydonni to'ldiring!";
+                                  errors.name = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
                               } else if (name.length < 4) {
-                                errors.name = "To'liq ismingizni yozing!";
+                                errors.name = lang === "RU" ? "Напиши свое полное имя!" : "To'liq ismingizni yozing!";
                               }
                               if (!phoneNumber) {
-                                  errors.phoneNumber = "Maydonni to'ldiring!";
+                                  errors.phoneNumber = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
                               } else if (phoneNumber.length < 17) {
-                                errors.phoneNumber = "To'liq raqamingizni yozing!";
+                                errors.phoneNumber = lang === "RU" ? "Напиши свой полный номер!" : "To'liq raqamingizni yozing!";
                               }
                               if (!address) {
-                                  errors.address = "Maydonni to'ldiring!";
+                                  errors.address = lang === "RU" ? "Заполни поле!" : "Maydonni to'ldiring!";
                               } else if (address.length < 4) {
-                                errors.address = "To'liq manzilni yozing!";
+                                errors.address = lang === "RU" ? "Напишите полный адрес!" : "To'liq manzilni yozing!";
                               }
 
                               return errors;
