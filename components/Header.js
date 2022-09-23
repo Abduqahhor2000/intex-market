@@ -107,7 +107,7 @@ const Header = () => {
               />
               </a>
            </span>
-          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded bg-white hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 sm:pt-0.5 font-bold w-6 h-6 sm:w-[32px] sm:h-[31px]' style={{"color": " rgb(0, 150, 150)"}}>
+          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded bg-white hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 pt-0.5 font-bold w-6 h-6 sm:w-[32px] sm:h-[31px]' style={{"color": " rgb(0, 150, 150)"}}>
             {lang === "UZ" ? "RU" : "UZ"}
           </div>
 
