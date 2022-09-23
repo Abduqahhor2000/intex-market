@@ -13,11 +13,7 @@ function Order({product}) {
 
     const createOrder = async () => {
         try{
-            console.log(product.id,
-                name,
-                phoneNumber,
-                address)
-            const {data} = await https({
+            await https({
                 method: 'post',
                 url: `/api/home/order`,
                 data: {
@@ -28,7 +24,6 @@ function Order({product}) {
                 }
             })
 
-            console.log(data)
             setResponse(true)
         } catch(e){
             console.log(e)

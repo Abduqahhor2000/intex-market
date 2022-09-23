@@ -12,9 +12,7 @@ function Consultation() {
 
     const createConsul = async () => {
         try{
-            console.log(name, phoneNumber)
-
-            const {data} = await https({
+            await https({
                 method: 'post',
                 url: `/api/home/consultation`,
                 data: {
@@ -23,7 +21,6 @@ function Consultation() {
                 }
             })
 
-            console.log(data)
             setResponse(true)
         } catch(e){
             console.log(e)

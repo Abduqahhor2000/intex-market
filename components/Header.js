@@ -26,7 +26,6 @@ const Header = () => {
           url: "https://market-index.herokuapp.com/api/home/category"
         })
         dispatch(saveCategories(data.data))
-        console.log(data)
       }catch(e){
         console.log(e)
       }
@@ -39,7 +38,6 @@ const Header = () => {
           url: "https://market-index.herokuapp.com/api/home/site"
         })
         dispatch(saveBaseInfo(data.data[0]))
-        console.log(data)
       }catch(e){
         console.log(e)
       }

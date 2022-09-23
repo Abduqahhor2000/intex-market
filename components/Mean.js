@@ -26,7 +26,6 @@ function Mean() {
                 url: "https://market-index.herokuapp.com/api/home/product"
               })
               dispatch(saveProducts(data.data))
-              console.log(data)
             }catch(e){
               console.log(e)
             }

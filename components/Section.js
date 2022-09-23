@@ -1,15 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import Modal from './Modal'
 import { useState } from 'react'
 import Order from './modalContent/Order'
 import {AnimatePresence} from "framer-motion"
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 
 function Section({category}) {
     const lang = useSelector(state => state.intex.market.lang)
     const products = useSelector(state => state.intex.market.products)
     const [product, setProduct] = useState("")
+
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
   return (
     <>
@@ -24,7 +30,8 @@ function Section({category}) {
                         return;
                     } 
                     return( 
-                        <div key={product.id} className="relative overflow-hidden pt-12 m-4 sm:m-5 pl-8 pb-7 bg-white rounded-b-3xl  rounded-r-3xl drop-shadow-lg" style={{"width": "340px"}}>
+                    <div data-aos="fade-up" key={product.id}>
+                        <div className="relative overflow-hidden pt-12 m-4 sm:m-5 pl-8 pb-7 bg-white rounded-b-3xl  rounded-r-3xl drop-shadow-lg" style={{"width": "340px"}}>
                             {
                                 product.status_id === 1 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(38, 177, 69, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
                               : product.status_id === 2 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(255, 214, 0, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
@@ -53,6 +60,7 @@ function Section({category}) {
                                 </span>
                             </div>
                         </div> 
+                    </div>
                     )
                 })
             }
