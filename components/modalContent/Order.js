@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Formik } from 'formik';
+import styles from "../../styles/Home.module.css"
 
 function Order({product}) {
     const lang = useSelector(state => state.intex.market.lang)
@@ -10,8 +11,10 @@ function Order({product}) {
     const [name, setName] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [address, setAddress] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const createOrder = async () => {
+      setIsLoading(true)
         try{
             await https({
                 method: 'post',
@@ -23,12 +26,12 @@ function Order({product}) {
                     address
                 }
             })
-
             setResponse(true)
-        } catch(e){
+          } catch(e){
             console.log(e)
             setResponse(false)
-        }
+          }
+          setIsLoading(false)
     }
 
     const onfocusPhoneNumber = () => {
@@ -214,7 +217,18 @@ function Order({product}) {
                                    <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.address && touched.address  ? "block" : "hidden"}`}>{errors.address && touched.address && errors.address}</span>
                                 </div>
                                 <button type="submit" disabled={isSubmitting} className="font-semibold text-xl xl:text-2xl hover:cursor-pointer text-center py-0.5 xl:py-1.5 px-5 rounded-xl flex mt-8 mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>
-                                    {lang === "RU" ? "Заказать" : "Buyurtma berish"}
+                                    {
+                                      isLoading ? <div className={styles.loadingiospinnerellipsiszon7txr7fkp}>
+                                                    <div className={styles.ldiopn062kit6cr}>
+                                                      <div></div>
+                                                      <div></div>
+                                                      <div></div>
+                                                      <div></div>
+                                                      <div></div>
+                                                    </div>
+                                                  </div> 
+                                                : <> {lang === "RU" ? "Заказать" : "Buyurtma berish"} </>
+                                    }
                                 </button>
                               </form>
                             )}
