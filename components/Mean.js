@@ -15,7 +15,7 @@ function Mean() {
     const lang = useSelector(state => state.intex.market.lang)
     const dispatch = useDispatch()
     const categories = useSelector(state => state.intex.market.categories)
-    const [consul, setConsul] = useState(true)
+    const [consul, setConsul] = useState("")
     const products = useSelector(state => state.intex.market.products) 
     
     useEffect(()=>{
