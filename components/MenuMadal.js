@@ -16,8 +16,7 @@ function MenuModal(props) {
             exit={{
                opacity: 0
             }}
-            className="fixed h-screen w-screen z-10 top-0 left-0" 
-            style={{"background": "rgba(0, 0, 0, 0.19)", "backdropFilter": "blur(2px)"}}>
+            className="fixed h-screen w-screen z-10 top-0 left-0 bg-blacker-02 backdrop-blur-sm">
         </motion.div>
         <motion.div 
             initial={{
@@ -36,8 +35,7 @@ function MenuModal(props) {
                     duration: 0.2,
                 }
               }}
-            className="fixed top-0 left-0 z-10 h-screen w-72" 
-            style={{"background": "#009398"}}
+            className="fixed top-0 left-0 z-10 h-screen w-72 bg-green-main" 
         >
             <motion.div
                 initial={{

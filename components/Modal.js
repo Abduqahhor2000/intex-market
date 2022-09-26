@@ -18,8 +18,8 @@ function Modal(props) {
             exit={{
                opacity: 0
             }}
-            className="fixed h-screen w-screen z-10 top-0 left-0" 
-            style={{"background": "rgba(0, 0, 0, 0.19)", "backdropFilter": "blur(2px)"}}>
+            className="fixed h-screen w-screen z-10 top-0 left-0 bg-blacker-02 backdrop-blur-sm" 
+        >
         </motion.div>
         <motion.div 
             initial={{
@@ -46,8 +46,7 @@ function Modal(props) {
                     duration: 0.1,
                 }
               }}
-            className="fixed top-0 left-0 right-0 bottom-0 z-10 m-auto rounded-2xl pt-9 pl-11 pb-6 pr-11" 
-            style={{"maxWidth": "fit-content" ,"maxHeight": "fit-content", "background": "rgba(248, 248, 248, 1)"}}
+            className="fixed top-0 left-0 w-fit h-fit right-0 bottom-0 z-10 bg-lighter-01 m-auto rounded-2xl"
         >
             <motion.div
                 initial={{
@@ -58,7 +57,7 @@ function Modal(props) {
                 }}
                 className="relative"
             >
-                <span onClick={() => setModal("")} className='absolute top-[-20px] right-[-30px] xl:top-0 xl:right-0 z-20 w-5 h-5 xl:w-8 xl:h-8 hover:cursor-pointer'>{exit_icon}</span>
+                <span onClick={() => setModal("")} className='absolute top-4 right-4 z-20 w-5 h-5 xl:w-8 xl:h-8 hover:cursor-pointer'>{exit_icon}</span>
                 {props.children}
             </motion.div>
         </motion.div>

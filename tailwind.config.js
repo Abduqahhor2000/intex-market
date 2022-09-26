@@ -5,10 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    maxWidth:{
+      "1120" : "1120px",
+    },
     extend: {
       colors: {
         green: {
-          main: '#009398',
+          main: '#00939C',
           recommend: '#139D4B',
           transparent: 'rgba(0, 147, 152, 0.09)',
           brand: "rgb(0, 150, 150)",
@@ -16,19 +19,37 @@ module.exports = {
         yellow: {
           btn: '#FFE600',
         },
+        red:{
+
+        },
         gray: {
           bg: '#f0f0f0',
         },
+        blacker:{
+          "02" : "rgba(0, 0, 0, 0.19)",
+        },
+        lighter: {
+          "01" : "rgba(248, 248, 248, 1)",
+        }
       },
       boxShadow: {
         cardShadow: '0px 5px 10px rgba(0, 0, 0, 0.25)',
         labelShadow: '0px 1px 6px rgba(0, 0, 0, 0.25)',
         dropShadow: '0px 4px 10px rgba(0, 0, 0, 0.25);',
+        btnShadow: "0px 1px 7px rgba(0, 0, 0, 0.25);",
+        categoryShadow:"0px 10px 10px rgba(0, 0, 0, 0.25);",
+        inputShadow:"0px 0px 14px rgba(0, 0, 0, 0.25);"
       },
       dropShadow: {
         textShadow: '0 4px 10px rgb(0 0 0 / 25%)',
       },
       width: {
+        inputWidth: "360px",
+        consul: "330px",
+        "633": "633px",
+        "500": "500px",
+        "330": "330px",
+        orderWidth: "1042px",
         cardWidth: '340px',
         resCardWidth: '310px',
         modalWidth: '441px',
@@ -37,6 +58,7 @@ module.exports = {
         itemCardWidth: '633px',
       },
       height: {
+        "505": "505px",
         cardHeight: '284px',
         resCardHeight: '250px',
         modalHeight: '584px',
@@ -47,11 +69,13 @@ module.exports = {
       borderRadius: {
         cardRadius: '0px 35px 35px 35px',
         btnRadius: '0px 10px;',
+        labelRadius:'0px 0px 10px 0px;',
         modalRadius: '35px',
+        oformit:"10px",
       },
     },
     screens:{
-      "min_sm": "320px",
+      "min_sm": "321px",
       "min_md": "380px",
       "min_lg": "480px",
       "sm":	"640px",

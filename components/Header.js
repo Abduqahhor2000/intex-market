@@ -48,8 +48,8 @@ const Header = () => {
   }, [dispatch])
 
   return (<>
-    <div className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-2xl' style={{"backgroundColor" : "rgb(0, 150, 150)"}}>
-      <div className='text-lg min_md:text-xl font-bold text-white whitespace-nowrap sm:text-2xl' style={{"textShadow": "0 4px 10px rgb(0 0 0 / 25%)"}}>INTEX-MARKET.UZ</div>
+    <div className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-dropShadow bg-green-main ' >
+      <div className='text-lg min_md:text-xl font-bold text-white whitespace-nowrap sm:text-2xl drop-shadow-textShadow'>INTEX-SHOP.UZ</div>
       <div className={`${styles.categoryScroll} hidden xl:flex overflow-x-auto items-center text-xl text-white`}>
         {
           categories.map(category => {
@@ -60,7 +60,8 @@ const Header = () => {
         }
       </div>
       <div className='flex justify-end items-center sm:ml-7'>
-           <span className='hover:cursor-pointer hidden xl:inline-block'><Link href={`tel:${baseInfo.phone_number}`}><a className='text-white text-md font-semibold'>{baseInfo.phone_number}</a></Link></span>        <div className='flex items-center ml-5 justify-between hover:cursor-pointer'>
+           <span className='hover:cursor-pointer hidden xl:inline-block'><Link href={`tel:${baseInfo.phone_number}`}><a className='text-white text-md font-semibold'>{baseInfo.phone_number}</a></Link></span>        
+           <div className='flex items-center ml-5 justify-between hover:cursor-pointer'>
            <span className='w-6 h-6 inline-block xl:hidden sm:w-8 sm:h-8 shadow-xl rounded-xl'>
              <a href={`tel:${baseInfo.phone_number}`} className='inline-block w-full h-full' rel="noreferrer">
               <Image 
@@ -105,11 +106,11 @@ const Header = () => {
               />
               </a>
            </span>
-          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded bg-white hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 pt-0.5 font-bold w-6 h-6 sm:w-[32px] sm:h-[31px]' style={{"color": " rgb(0, 150, 150)"}}>
+          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded bg-white hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 pt-0.5 font-bold w-6 h-6 sm:w-8 sm:h-8 text-green-main' >
             {lang === "UZ" ? "RU" : "UZ"}
           </div>
 
-          <div onClick={()=> setIsMenuOpen(true)} className='ml-4 min_lg:ml-5 sm:mr-5 hover:cursor-pointer xl:hidden w-6 h-6 sm:w-[30px] sm:h-[30px]'>
+          <div onClick={()=> setIsMenuOpen(true)} className='ml-4 min_lg:ml-5 sm:mr-5 hover:cursor-pointer xl:hidden w-6 h-6 sm:w-8 sm:h-8'>
             {menu_icon}
           </div>
         </div> 

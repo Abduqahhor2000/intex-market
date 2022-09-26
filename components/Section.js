@@ -20,29 +20,28 @@ function Section({category}) {
 
   return (
     <>
-        <div className='relative text-center text-2xl sm:text-5xl text-white font-bold py-1.5 sm:py-5 h-12 sm:h-24 mb-1 sm:mb-20' style={{"backgroundColor":  "rgb(0, 170, 170)", "boxShadow": "0 10px 10px rgba(0, 0, 0, 0.25)"}}>
-            <div id={category.id} className="w-full absolute top-[-48px] min_md:top-[-64px] min_lg:top-[-80px] duration-300"></div>
+        <div className='relative text-center text-2xl sm:text-5xl text-white font-bold py-1.5 sm:py-5 h-12 sm:h-24 mb-1 sm:mb-20 bg-green-main shadow-categoryShadow '>
+            <div id={category.id} className="w-full absolute -top-12 min_md:-top-20 min_lg:-top-20 duration-300"></div>
             {category[`name_${lang.toLowerCase()}`]}
         </div>
-        <div className='flex justify-center flex-wrap h-auto mb-6 sm:mb-20 mx-auto' style={{"backgroundColor": "#f0f0f0", "maxWidth": "1150px"}}>
+        <div className='flex justify-center flex-wrap h-auto my-4 sm:mb-20 mx-auto bg-gray-bg max-w-6xl'>
             {
                 products.map(product => {
                     if(product.category_id !== category.id){
                         return;
                     } 
                     return( 
-                    <div data-aos="fade-up" key={product.id}>
-                        <div className="relative overflow-hidden pt-12 m-4 sm:m-5 pl-8 pb-7 bg-white rounded-b-3xl  rounded-r-3xl drop-shadow-lg" style={{"width": "340px"}}>
+                        <div data-aos="fade-up" key={product.id} className="relative overflow-hidden pt-7 min_md:pt-12 m-4 sm:m-5 pl-8 pb-5 min_md:pb-7 bg-white rounded-cardRadius shadow-cardShadow w-64 min_md:w-cardWidth">
                             {
-                                product.status_id === 1 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(38, 177, 69, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
-                              : product.status_id === 2 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(255, 214, 0, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
-                              : product.status_id === 3 ? <div className='absolute top-0 left-0 text-white font-semibold text-md pb-0.5 px-4 rounded-br-xl drop-shadow-lg' style={{"background": `rgba(237, 32, 32, 1)`}}>{product[`status_${lang.toLowerCase()}`]}</div> 
+                                product.status_id === 1 ? <div className='absolute top-0 left-0 text-white font-semibold text-xs min_md:text-base pb-0.5 px-4 rounded-labelRadius shadow-labelShadow bg-green-recommend ' >{product[`status_${lang.toLowerCase()}`]}</div> 
+                              : product.status_id === 2 ? <div className='absolute top-0 left-0 text-white font-semibold text-xs min_md:text-base pb-0.5 px-4 rounded-labelRadius shadow-labelShadow bg-yellow-btn ' >{product[`status_${lang.toLowerCase()}`]}</div> 
+                              : product.status_id === 3 ? <div className='absolute top-0 left-0 text-white font-semibold text-xs min_md:text-base pb-0.5 px-4 rounded-labelRadius shadow-labelShadow bg-red-500 '>{product[`status_${lang.toLowerCase()}`]}</div> 
                               : null
                             }
-                            <div className='font-bold text-xl text-center mr-8' style={{"color": "rgb(0, 150, 150)"}}>{product[`frame_${lang.toLowerCase()}`]}</div>
+                            <div className='font-bold text-xs min_md:text-xl text-center mr-8 text-green-main' >{product[`frame_${lang.toLowerCase()}`]}</div>
                             <Image
-                                src={product.image}
-                                alt=""
+                                src={product.image }
+                                alt="product"
                                 width={11}
                                 height={5}
                                 layout="responsive" 
@@ -50,18 +49,17 @@ function Section({category}) {
                             />
                             <div className='flex justify-between mt-4 items-end relative p-r-8'>
                                 <div className='w-full'>
-                                    <span className='text-md text-gray-400 relative font-light'>
-                                        <span className='absolute h-0.5 w-full bg-red-500 rotate-6 mt-3'></span>
+                                    <span className='text-[8px] min_md:text-xs text-gray-400 relative font-light'>
+                                        <span className='absolute h-[1px] w-full bg-red-500 rotate-6 mt-4 min_md:mt-3.5'></span>
                                         {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} {lang === "RU" ? "сум" : `so'm`}
                                     </span>
-                                    <div className='text-xl font-bold -mt-1.5 text-black'>{product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} {lang === "RU" ? "сум" : `so'm`}</div>
+                                    <div className='text-base font-bold -mt-1.5 text-black'>{product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} {lang === "RU" ? "сум" : `so'm`}</div>
                                 </div>
-                                <span onClick={() => setProduct(product)} className={`absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl pt-1 font-semibold mr-9 hover:cursor-pointer text-black text-xs drop-shadow-lg ${product.status_id === 3 ? "hidden" : ""}`} style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
+                                <span onClick={() => setProduct(product)} className={`absolute bottom-0 right-0 px-4 pt-0.5 pb-1 rounded-btnRadius font-semibold mr-8 min_md:mr-9 hover:cursor-pointer text-black text-[10px] min_md:text-base shadow-btnShadow bg-yellow-btn  ${product.status_id === 3 ? "hidden" : ""}`} >
                                     { lang === "RU" ? "Заказать" : "Buyurtma"}
                                 </span>
                             </div>
                         </div> 
-                    </div>
                     )
                 })
             }

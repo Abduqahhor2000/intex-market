@@ -98,8 +98,8 @@ function Footer() {
 
     
   return (
-    <div className='py-3' style={{"background": "rgb(0, 150, 150)"}}>
-        <div className='mx-auto flex flex-wrap items-start justify-center lg:justify-between px-5 max-w-[1120px]'>
+    <div className='py-3 bg-green-main'>
+        <div className='mx-auto flex flex-wrap items-start justify-center lg:justify-between px-5 max-w-1120'>
             <div className='flex flex-col items-center w-full sm:w-80 mx-0 min_md:mx-5 min_lg:mx-20 sm:mx-32 md:mx-52 lg:mx-0 mb-10 lg:mb-0'>
                 <h2 className='leading-7 mb-4 text-xl sm:text-2xl text-center mx-5 font-semibold text-white'>{lang === "RU" ? "Получить бесплатную консультацию" : "Bepul konsultatsiya olish"}</h2>
                 <Formik
@@ -144,8 +144,7 @@ function Footer() {
                                 autocomplete="off"
                                 name="name"
                                 required
-                                className={`peer bg-white outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
-                                style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
+                                className={`peer bg-white outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`}/>
                             <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                             <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                         </div>
@@ -160,12 +159,11 @@ function Footer() {
                                 autocomplete="off"
                                 maxLength={17}
                                 required
-                                className={`peer outline-none bg-white rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
-                                style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
+                                className={`peer outline-none bg-white rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`}/>
                             <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                             <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                         </div>
-                        <button type="submit" disabled={isSubmitting} className="h-9 pt-2 min_sm:pt-1.5 px-5 sm:px-10 font-semibold text-xs min_sm:text-sm hover:cursor-pointer text-center py-1 rounded-lg flex mt-8 mx-auto drop-shadow-lg" style={{"background" : "rgba(255, 230, 0, 1)"}}>
+                        <button type="submit" disabled={isSubmitting} className="h-9 pt-2 min_sm:pt-1.5 px-5 sm:px-10 font-semibold text-xs min_sm:text-sm hover:cursor-pointer text-center py-1 flex mt-8 mx-auto bg-yellow-btn rounded-oformit shadow-dropShadow">
                           { lang === "RU" ? "Хочу проконсультироваться" : "Konsultatsiya olish"}
                         </button>
                       </form>

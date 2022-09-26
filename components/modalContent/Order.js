@@ -92,10 +92,8 @@ function Order({product}) {
 
         setPhoneNumber(newNumber)
     }
-    
-
   return (
-    <div className='flex flex-col text-black xl:flex-row items-center xl:justify-between relative w-56 xl:w-[1000px]'> 
+    <div className='flex flex-col text-black xl:flex-row items-center xl:justify-between relative w-72 min_md:w-330 xl:w-orderWidth pt-9 px-8 xl:pl-11 xl:pr-4 pb-6 xl:pb-11'> 
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
@@ -119,10 +117,10 @@ function Order({product}) {
             </> : 
             <>
                 <div 
-                    className='bg-white rounded-2xl rounded-tl-none pt-6 xl:pt-12 px-6 w-60 h-40 xl:w-[633px] xl:h-[505px]'
-                    style={{"boxShadow": "0px 5px 10px 0px rgba(0, 0, 0, 0.25)"}}
+                    className='bg-white rounded-cardRadius pt-6 xl:pt-12 px-6 w-full h-40 xl:w-633 xl:h-505 shadow-cardShadow'
+                    
                 >   
-                    <div className='font-bold w-full text-base xl:text-3xl text-center mr-8 mb-0 xl:mb-5' style={{"color": "rgb(0, 150, 150)"}}>{product[`frame_${lang.toLowerCase()}`]}</div>
+                    <div className='font-bold w-full text-base xl:text-3xl text-center mr-8 mb-0 xl:mb-5 text-green-main' >{product[`frame_${lang.toLowerCase()}`]}</div>
                     <Image
                         src={product.image}
                         alt=''
@@ -132,11 +130,14 @@ function Order({product}) {
                         
                         objectFit="contain"
                     />
-                    <div className='hidden xl:block text-3xl font-bold text-center mt-9'>{product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <span className='text-xl'>сум</span></div>
+                    <div className='hidden xl:block text-3xl font-bold text-center mt-9'>{product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='text-xl ml-1'>{lang === "RU" ? ` сум` : ` so'm`}</span></div>
                 </div>
-                <div className="flex items-center">
-                    <div className='w-80 flex flex-col items-center'>
-                        <div className='block xl:hidden text-xl xl:text-3xl font-bold text-center mt-4 mb-1'>{product.sale_price} <span className='text-xl'>{lang === "RU" ? "сум" : `so'm`}</span></div>
+                <div className="flex items-center xl:ml-4 w-full xl:w-fit">
+                    <div className='w-full xl:w-inputWidth flex flex-col items-center'>
+                        <div className='flex justify-end xl:hidden text-xl xl:text-3xl font-bold text-center mt-4 mb-1'>
+                          {product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} 
+                          <span className='text-xl ml-1'>{lang === "RU" ? ` сум` : ` so'm`}</span>
+                        </div>
                         <Formik
                             initialValues={{ name: '', phoneNumber: '', address: '' }}
                             validate={() => {
@@ -174,7 +175,7 @@ function Order({product}) {
                               /* and other goodies */
                             }) => (
                                 <form onSubmit={handleSubmit}>
-                                <div className="relative">
+                                <div className="relative w-full mt-2">
                                     <input 
                                         value={name}
                                         onChange={(e) => {setName(e.target.value); handleChange}}
@@ -183,12 +184,12 @@ function Order({product}) {
                                         name="name"
                                         autocomplete="off"
                                         required
-                                        className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-4 xl:mt-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
-                                        style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
-                                    <span className='absolute top-6 xl:top-7 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
+                                        className={`peer bg-white outline-none shadow-inputShadow  rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                        />
+                                    <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                                     <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                                 </div>
-                                <div className="relative mb-3 mt-3">
+                                <div className="relative mb-6 mt-6 w-full">
                                     <input 
                                         value={phoneNumber}
                                         onChange={(e) => {CantrolPhoneNumber(e.target.value); handleChange}}
@@ -199,13 +200,13 @@ function Order({product}) {
                                         autocomplete="off"
                                         maxLength={17}
                                         required
-                                        className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-3 xl:mt-4 border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
-                                        style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
-                                    <span className='absolute top-5 xl:top-6 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
+                                        className={`peer bg-white outline-none shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
+                                        />
+                                    <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                                     <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                                 </div>
                                 
-                                <div className="relative">
+                                <div className="relative w-full mb-6">
                                    <input 
                                        value={address}
                                        onChange={(e) => {setAddress(e.target.value); handleChange}}
@@ -214,12 +215,12 @@ function Order({product}) {
                                        type="text"
                                        autocomplete="off"
                                        required
-                                       className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-3 xl:mt-4 border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
-                                       style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
-                                   <span className='absolute top-5 xl:top-6 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
+                                       className={`peer bg-white outline-none shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
+                                       />
+                                   <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
                                    <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.address && touched.address  ? "block" : "hidden"}`}>{errors.address && touched.address && errors.address}</span>
                                 </div>
-                                <button type="submit" disabled={isSubmitting} className="font-semibold text-xl xl:text-2xl hover:cursor-pointer text-center py-0.5 xl:py-1.5 px-5 rounded-xl flex mt-8 mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>
+                                <button type="submit" disabled={isSubmitting} className="font-semibold text-xl xl:text-2xl hover:cursor-pointer text-center pb-0.5 xl:py-1.5 px-5 rounded-oformit flex mx-auto shadow-dropShadow  bg-yellow-btn " >
                                     {
                                       isLoading ? <div className={styles.loadingiospinnerellipsiszon7txr7fkp}>
                                                     <div className={styles.ldiopn062kit6cr}>

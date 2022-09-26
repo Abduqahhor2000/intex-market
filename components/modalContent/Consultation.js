@@ -91,7 +91,7 @@ function Consultation() {
     }
 
   return (
-    <div className='flex flex-col items-center relative py-7 text-black w-60 md:w-[350px]'> 
+    <div className='flex flex-col items-center relative text-black w-72 min_md:w-consul md:w-modalWidth px-10 md:px-8 py-12 md:py-16'> 
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
