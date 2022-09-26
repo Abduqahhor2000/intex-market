@@ -61,7 +61,7 @@ function Mean() {
         <div className='sm:h-24 text-2xl sm:text-5xl font-bold py-5 text-center' style={{"background": "rgba(226, 239, 239, 1)", "color": "rgb(0, 150, 150)"}}>
         {lang === "RU" ? "Ценности наших клиентов" : "Mijozlarni qadirlash"}
         </div>
-        <div className='w-min md:w-full m-auto flex flex-col flex-wrap md:flex-row justify-center items-start md:items-center pt-10 pb-3'>
+        <div className='w-min md:w-full text-black m-auto flex flex-col flex-wrap md:flex-row justify-center items-start md:items-center pt-10 pb-3'>
             <div className='flex justify-between items-center mx-4 mb-7'>
                 <div className='w-24 h-24 mr-5'>
                     <Image 
@@ -115,7 +115,7 @@ function Mean() {
             {lang === "RU" ? "Бассейны от intex в Ташкенте" : "Intex basseynlari Toshkentda"}  
 
         </div>
-        <div className='flex flex-col md:flex-row text-base min_lg:text-xl sm:text-2xl justify-center py-8 md:py-20'>
+        <div className='flex text-black flex-col md:flex-row text-base min_lg:text-xl sm:text-2xl justify-center py-8 md:py-20'>
             <div className='px-5 min_lg:px-5 mb-8 w-full md:w-[500px]'>
                 {lang === "RU" ? "Бассейны от intex - доступная по цене, качественная, надежная и экологически чистая продукция, которая предназначена для приятного отдыха всей семьи. Бассейн можно установить совершенно на любом участке и активно пользоваться им в летний период. Бассейн подарит вам яркие эмоции и спасет от жары в знойные летние дни." 
                                : `Intex basseynlari - bu butun oila uchun yoqimli dam olish uchun mo'ljallangan arzon, yuqori sifatli, ishonchli va ekologik toza mahsulotlar. Basseyn har qanday hovliga to'liq o'rnatilishi va yozda faol foydalanilishi mumkin. Basseyn sizga yorqin his-tuyg'ularni beradi va issiq yoz kunlarida sizni jaziramadan qutqaradi.`}

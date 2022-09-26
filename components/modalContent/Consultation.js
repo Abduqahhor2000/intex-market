@@ -91,7 +91,7 @@ function Consultation() {
     }
 
   return (
-    <div className='flex flex-col items-center relative py-7 w-60 md:w-[350px]'> 
+    <div className='flex flex-col items-center relative py-7 text-black w-60 md:w-[350px]'> 
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
@@ -167,8 +167,9 @@ function Consultation() {
                                 onBlur={handleBlur}
                                 type="text"
                                 name="name"
+                                autocomplete="off"
                                 required
-                                className={`peer outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl mb-3 md:mb-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl mb-3 md:mb-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                             <span className='absolute top-2 md:top-3 left-6 text-lg md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-6 peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                             <span className={`absolute text-xs md:text-base -translate-y-3.5 md:-translate-y-6 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
@@ -181,9 +182,10 @@ function Consultation() {
                                 onBlur={handleBlur}
                                 name="phoneNumber"
                                 type="text"
+                                autocomplete="off"
                                 maxLength={17}
                                 required
-                                className={`peer outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
+                                className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                             <span className='absolute top-2 md:top-3 left-6 text-lg md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-6 peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                             <span className={`absolute text-xs md:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>

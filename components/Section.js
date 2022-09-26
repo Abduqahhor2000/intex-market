@@ -8,6 +8,7 @@ import {AnimatePresence} from "framer-motion"
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
+
 function Section({category}) {
     const lang = useSelector(state => state.intex.market.lang)
     const products = useSelector(state => state.intex.market.products)
@@ -51,11 +52,11 @@ function Section({category}) {
                                 <div className='w-full'>
                                     <span className='text-md text-gray-400 relative font-light'>
                                         <span className='absolute h-0.5 w-full bg-red-500 rotate-6 mt-3'></span>
-                                        {product.price} {lang === "RU" ? "сум" : `so'm`}
+                                        {product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} {lang === "RU" ? "сум" : `so'm`}
                                     </span>
-                                    <div className='text-xl font-bold' style={{"marginTop": "-7px"}}>{product.sale_price} {lang === "RU" ? "сум" : `so'm`}</div>
+                                    <div className='text-xl font-bold -mt-1.5 text-black'>{product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} {lang === "RU" ? "сум" : `so'm`}</div>
                                 </div>
-                                <span onClick={() => setProduct(product)} className={`absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl pt-1 font-semibold mr-9 hover:cursor-pointer text-xs drop-shadow-lg ${product.status_id === 3 ? "hidden" : ""}`} style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
+                                <span onClick={() => setProduct(product)} className={`absolute bottom-0 right-0 h-7 px-5 rounded-tr-xl rounded-bl-xl pt-1 font-semibold mr-9 hover:cursor-pointer text-black text-xs drop-shadow-lg ${product.status_id === 3 ? "hidden" : ""}`} style={{"backgroundColor": "rgba(255, 230, 0, 1)"}}>
                                     { lang === "RU" ? "Заказать" : "Buyurtma"}
                                 </span>
                             </div>

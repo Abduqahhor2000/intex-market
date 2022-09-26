@@ -95,7 +95,7 @@ function Order({product}) {
     
 
   return (
-    <div className='flex flex-col xl:flex-row items-center xl:justify-between relative w-56 xl:w-[1000px]'> 
+    <div className='flex flex-col text-black xl:flex-row items-center xl:justify-between relative w-56 xl:w-[1000px]'> 
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
@@ -132,7 +132,7 @@ function Order({product}) {
                         
                         objectFit="contain"
                     />
-                    <div className='hidden xl:block text-3xl font-bold text-center mt-9'>{product.sale_price} <span className='text-xl'>сум</span></div>
+                    <div className='hidden xl:block text-3xl font-bold text-center mt-9'>{product.sale_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} <span className='text-xl'>сум</span></div>
                 </div>
                 <div className="flex items-center">
                     <div className='w-80 flex flex-col items-center'>
@@ -181,8 +181,9 @@ function Order({product}) {
                                         onBlur={handleBlur}
                                         type="text"
                                         name="name"
+                                        autocomplete="off"
                                         required
-                                        className={`peer outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-4 xl:mt-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                        className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-4 xl:mt-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                         style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                                     <span className='absolute top-6 xl:top-7 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                                     <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
@@ -195,9 +196,10 @@ function Order({product}) {
                                         onBlur={handleBlur}
                                         name="phoneNumber"
                                         type="text"
+                                        autocomplete="off"
                                         maxLength={17}
                                         required
-                                        className={`peer outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-3 xl:mt-4 border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
+                                        className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-3 xl:mt-4 border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
                                         style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                                     <span className='absolute top-5 xl:top-6 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                                     <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
@@ -210,8 +212,9 @@ function Order({product}) {
                                        onBlur={handleBlur}
                                        name="address"
                                        type="text"
+                                       autocomplete="off"
                                        required
-                                       className={`peer outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-3 xl:mt-4 border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
+                                       className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-64 xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl mt-3 xl:mt-4 border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
                                        style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                                    <span className='absolute top-5 xl:top-6 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
                                    <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.address && touched.address  ? "block" : "hidden"}`}>{errors.address && touched.address && errors.address}</span>

@@ -29,6 +29,8 @@ function Footer() {
             })
 
             setResponse(true)
+            setName("")
+            setPhoneNumber("")
         } catch(e){
             console.log(e)
             setResponse(false)
@@ -131,7 +133,7 @@ function Footer() {
                       isSubmitting,
                       /* and other goodies */
                     }) => (
-                        <form onSubmit={handleSubmit} className="w-full">
+                        <form onSubmit={handleSubmit} className="w-full text-black">
                             
                         <div className="relative mb-6">
                             <input 
@@ -139,9 +141,10 @@ function Footer() {
                                 onChange={(e) => {setName(e.target.value); handleChange}}
                                 onBlur={handleBlur}
                                 type="text"
+                                autocomplete="off"
                                 name="name"
                                 required
-                                className={`peer outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                className={`peer bg-white outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                             <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                             <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
@@ -154,9 +157,10 @@ function Footer() {
                                 onBlur={handleBlur}
                                 name="phoneNumber"
                                 type="text"
+                                autocomplete="off"
                                 maxLength={17}
                                 required
-                                className={`peer outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
+                                className={`peer outline-none bg-white rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
                             <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                             <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>

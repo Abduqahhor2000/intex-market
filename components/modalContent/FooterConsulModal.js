@@ -6,7 +6,7 @@ function FooterConsulModal({response}) {
   const lang = useSelector(state => state.intex.market.lang)
 
   return (
-    <div className='flex flex-col items-center relative py-7 w-60 md:w-[350px]'> 
+    <div className='flex flex-col text-black items-center relative py-7 w-60 md:w-[350px]'> 
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
