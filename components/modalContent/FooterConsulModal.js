@@ -6,11 +6,11 @@ function FooterConsulModal({response}) {
   const lang = useSelector(state => state.intex.market.lang)
 
   return (
-    <div className='flex flex-col text-black items-center relative py-7 w-60 md:w-[350px]'> 
+    <div className='flex flex-col items-center relative text-black w-72 min_md:w-consul md:w-modalWidth px-10 md:px-8 py-12 md:py-16'> 
         {
             response === true ? <>
                 <div className='flex flex-col items-center w-full'>
-                    <div className="w-32 h-32 xl:w-60 xl:h-60 mb-10">
+                    <div className="w-28 h-28 xl:w-60 xl:h-60 mb-10">
                         <Image 
                             src="/true_icon.png"
                             alt=""

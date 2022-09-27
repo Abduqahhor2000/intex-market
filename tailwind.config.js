@@ -48,6 +48,7 @@ module.exports = {
         consul: "330px",
         "633": "633px",
         "500": "500px",
+        "350": "350px",
         "330": "330px",
         orderWidth: "1042px",
         cardWidth: '340px',
