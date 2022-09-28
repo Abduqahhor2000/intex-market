@@ -40,7 +40,7 @@ module.exports = {
         categoryShadow: "0 10px 10px rgba(0, 0, 0, 0.25)",
       },
       dropShadow: {
-        inputShadow: "0 0 14px rgba(0, 0, 0, 0.25)",
+        inputShadow: "0 0 4px rgba(0, 0, 0, 0.25)",
         textShadow: '0 4px 10px rgb(0 0 0 / 25%)',
       },
       width: {

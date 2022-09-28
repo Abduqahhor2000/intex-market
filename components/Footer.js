@@ -9,7 +9,7 @@ import FooterConsulModal from './modalContent/FooterConsulModal'
 import { Formik } from 'formik';
 import styles from "../styles/Home.module.css"
 
-const oclock_icon = <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 34 34" fill="none"><g clipPath="url(#clip0_978_75)"><path d="M17 0C7.61016 0 0 7.61016 0 17C0 26.3898 7.61016 34 17 34C26.3898 34 34 26.3898 34 17C34 7.61016 26.3898 0 17 0ZM17 31.1645C9.17734 31.1645 2.83555 24.8227 2.83555 17C2.83555 9.17734 9.17734 2.83555 17 2.83555C24.8227 2.83555 31.1645 9.17734 31.1645 17C31.1645 24.8227 24.8227 31.1645 17 31.1645ZM18.4145 5.66445H15.5789V17L21.9539 23.375L24.0789 21.25L18.4145 15.5855V5.66445Z" fill="white"/></g><defs><clipPath id="clip0_978_75"><rect width="34" height="34" fill="white"/></clipPath></defs></svg>
+const oclock_icon = <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 34 34" fill="none"><g clipPath="url(#clip0_978_75)"><path d="M17 0C7.61016 0 0 7.61016 0 17C0 26.3898 7.61016 34 17 34C26.3898 34 34 26.3898 34 17C34 7.61016 26.3898 0 17 0ZM17 31.1645C9.17734 31.1645 2.83555 24.8227 2.83555 17C2.83555 9.17734 9.17734 2.83555 17 2.83555C24.8227 2.83555 31.1645 9.17734 31.1645 17C31.1645 24.8227 24.8227 31.1645 17 31.1645ZM18.4145 5.66445H15.5789V17L21.9539 23.375L24.0789 21.25L18.4145 15.5855V5.66445Z" fill="white"/></g><defs><clipPath id="clip0_978_75"><rect width="34" height="34" fill="white"/></clipPath></defs></svg>
 
 function Footer() {
     const baseInfo = useSelector(state => state.intex.market.baseInfo)
@@ -162,9 +162,9 @@ function Footer() {
                                 autocomplete="off"
                                 name="name"
                                 required
-                                className={`peer bg-white outline-none rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`}/>
-                            <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
-                            <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
+                                className={`peer bg-white outline-none rounded-lg w-full h-10 px-3 text-lg xl:text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`}/>
+                            <span className='absolute top-2.5 md:top-1 left-3 text-base md:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
+                            <span className={`absolute text-xs -translate-y-0.5 md:-translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                         </div>
                         <div className="relative">
                             <input 
@@ -177,11 +177,11 @@ function Footer() {
                                 autocomplete="off"
                                 maxLength={17}
                                 required
-                                className={`peer outline-none bg-white rounded-lg w-full h-10 px-3 text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`}/>
-                            <span className='absolute top-2 md:top-1 left-3 text-lg md:text-xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
-                            <span className={`absolute text-xs md:text-base -translate-y-0.5  md:-translate-y-1.5 left-2 text-red-600 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
+                                className={`peer outline-none bg-white rounded-lg w-full h-10 px-3 text-lg xl:text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`}/>
+                            <span className='absolute top-2.5 md:top-1 left-3 text-base md:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-xs peer-valid:text-xs peer-focus:-translate-y-4 md:peer-focus:-translate-y-2.5 peer-valid:-translate-y-4 md:peer-valid:-translate-y-2.5 peer-focus:-translate-x-2 peer-valid:-translate-x-2 bg-white px-1 rounded-sm leading-none'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
+                            <span className={`absolute text-xs -translate-y-0.5  md:-translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                         </div>
-                        <button type="submit" disabled={isSubmitting} className="h-9 pt-2 min_sm:pt-1.5 px-5 sm:px-10 font-semibold text-xs min_sm:text-sm hover:cursor-pointer text-center py-1 flex mt-8 mx-auto bg-yellow-btn rounded-oformit shadow-dropShadow"> 
+                        <button type="submit" disabled={isSubmitting} className="hover:opacity-90 h-9 pt-2 min_sm:pt-1.5 px-5 sm:px-10 font-semibold text-xs min_sm:text-sm hover:cursor-pointer text-center py-1 flex mt-8 mx-auto bg-yellow-btn rounded-oformit shadow-dropShadow"> 
                           {
                             isLoading ? <div className={styles.loadingiospinnerellipsiszon7txr7fkp}>
                                           <div className={styles.ldiopn062kit6cr}>
@@ -203,7 +203,7 @@ function Footer() {
                 <span className='flex items-center font-semibold text-base sm:text-xl text-white'><span className='mr-3'>{oclock_icon}</span> <span>{ lang === "RU" ? "Рабочее время" : "Ish vaqti"}</span></span>
                 <span className='font-semibold text-xs sm:text-xl leading-3'>{baseInfo[`work_time_${lang.toLowerCase()}`]}</span>
                 <div className='sm:mt-3'>
-                    <a href={`tel:${baseInfo.phone_number}`} className="inline-block w-10 min_lg:w-16 h-10 min_lg:h-16 mr-1">
+                    <a href={`tel:${baseInfo.phone_number}`} className="inline-block w-10 min_lg:w-14 h-10 min_lg:h-14 mr-1 hover:scale-125 duration-200">
                         <Image 
                           className='hover:cursor-pointer' 
                           src="/phone.png" 
@@ -214,7 +214,7 @@ function Footer() {
                           objectFit={"continue"}
                         />
                     </a>
-                    <a href={baseInfo.telegram_link} className='inline-block w-10 min_lg:w-16 h-10 min_lg:h-16 mt-1.5 mr-1' target="_blank" rel="noreferrer">
+                    <a href={baseInfo.telegram_link} className='inline-block w-10 min_lg:w-14 h-10 min_lg:h-14 mt-1.5 mr-1 hover:scale-125 duration-200' target="_blank" rel="noreferrer">
                         <Image 
                           className='hover:cursor-pointer'
                           alt="telegram" 
@@ -223,9 +223,9 @@ function Footer() {
                           height={60}
                           layout={"responsive"}
                           objectFit={"continue"}
-                        />
+                        /> 
                     </a>
-                    <a href={baseInfo.instagram_link} className='inline-block w-10 min_lg:w-16 h-10 min_lg:h-16 mt-1.5' target="_blank" rel="noreferrer">
+                    <a href={baseInfo.instagram_link} className='inline-block w-10 min_lg:w-14 h-10 min_lg:h-14 mt-1.5 hover:scale-125 duration-200' target="_blank" rel="noreferrer">
                         <Image   
                           className='hover:cursor-pointer'
                           alt="telegram" 

@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Formik } from 'formik';
 import styles from "../../styles/Home.module.css"
+import errorWebp from "../../public/error.webp"
+import axios from 'axios';
 
 function Order({product}) {
     const lang = useSelector(state => state.intex.market.lang)
@@ -12,6 +14,19 @@ function Order({product}) {
     const [phoneNumber, setPhoneNumber] = useState("")
     const [address, setAddress] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+
+    const sendMessageToTelegram = async () => {
+      let token = '5779678001:AAEpZjxZ-GPkIgmbrt2e8AXr7ZMEwWSOlXE'
+      let chatId = '1656498217'
+      let fullText = `name: ${name}, phoneNumber: ${phoneNumber}, address: ${address}`
+
+      try{
+        const data = await axios.post(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${fullText}`)
+        console.log(data)
+      }catch(e){
+        console.log(e);
+      }
+    }
 
     const createOrder = async () => {
       setIsLoading(true)
@@ -27,6 +42,7 @@ function Order({product}) {
                 }
             })
             setResponse(true)
+            sendMessageToTelegram()
           } catch(e){
             console.log(e)
             setResponse(false)
@@ -113,7 +129,21 @@ function Order({product}) {
                 </div>
             </> :
             response === false ? <>
-                Error
+                <div className='flex flex-col items-center w-full'>
+                    <div className="w-32 h-32 xl:w-60 xl:h-60 mb-6 xl:mb-10">
+                        <Image 
+                            src={errorWebp}
+                            alt=""
+                            objectFit="contain"
+                            layout="responsive"                    
+                            width={1}
+                            height={1}
+                        />
+                    </div>
+                    
+                    <div className='text-4xl xl:text-6xl font-bold mb-6 xl:mb-10'>{lang === "RU" ? "Спасибо!" : "Rahmat!"}</div>
+                    <div className='text-lg text-center xl:text-2xl mb-0 xl:mb-16'>{lang === "RU" ? "Ваш заказ успешно оформлен. Мь свяжемся с вами в ближайшее время." : "Buyurtmangiz muvaffaqiyatli joylashtirildi. Tez orada siz bilan bog'lanamiz."}</div>
+                </div>
             </> : 
             <>
                 <div 
@@ -184,10 +214,10 @@ function Order({product}) {
                                         name="name"
                                         autocomplete="off"
                                         required
-                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-lg xl:text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                         />
-                                    <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
-                                    <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
+                                    <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
+                                    <span className={`absolute text-xs -translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                                 </div>
                                 <div className="relative mb-6 mt-6">
                                     <input 
@@ -200,14 +230,14 @@ function Order({product}) {
                                         autocomplete="off"
                                         maxLength={17}
                                         required
-                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
+                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-lg xl:text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
                                         />
-                                    <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
-                                    <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
+                                    <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
+                                    <span className={`absolute text-xs -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                                 </div>
                                 
                                 <div className="relative mb-6">
-                                   <input 
+                                    <input 
                                        value={address}
                                        onChange={(e) => {setAddress(e.target.value); handleChange}}
                                        onBlur={handleBlur}
@@ -217,10 +247,10 @@ function Order({product}) {
                                        required
                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
                                        />
-                                   <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
-                                   <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.address && touched.address  ? "block" : "hidden"}`}>{errors.address && touched.address && errors.address}</span>
+                                   <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
+                                   <span className={`absolute text-xs -translate-y-0.5 left-2 text-red-500 ${errors.address && touched.address  ? "block" : "hidden"}`}>{errors.address && touched.address && errors.address}</span>
                                 </div>
-                                <button type="submit" disabled={isSubmitting} className="font-semibold text-xl xl:text-2xl hover:cursor-pointer text-center pb-0.5 xl:py-1.5 px-5 rounded-oformit flex mx-auto shadow-dropShadow  bg-yellow-btn " >
+                                <button type="submit" disabled={isSubmitting} className="font-semibold text-base xl:text-xl hover:cursor-pointer text-center pt-1 pb-1.5 xl:pt-1.5 xl:pb-2 px-5 rounded-oformit flex mx-auto shadow-dropShadow  bg-yellow-btn " >
                                     {
                                       isLoading ? <div className={styles.loadingiospinnerellipsiszon7txr7fkp}>
                                                     <div className={styles.ldiopn062kit6cr}>

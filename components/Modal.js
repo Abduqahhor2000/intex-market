@@ -57,7 +57,7 @@ function Modal(props) {
                 }}
                 className="relative"
             >
-                <span onClick={() => setModal("")} className='absolute top-4 right-4 z-20 w-5 h-5 xl:w-8 xl:h-8 hover:cursor-pointer'>{exit_icon}</span>
+                <span onClick={() => setModal("")} className='absolute top-4 right-4 z-20 w-6 h-6 rounded-full hover:bg-gray-200 p-1 xl:w-8 xl:h-8 hover:cursor-pointer'>{exit_icon}</span>
                 {props.children}
             </motion.div>
         </motion.div>

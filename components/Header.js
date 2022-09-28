@@ -62,8 +62,21 @@ const Header = () => {
     getBaseInfo()
   }, [dispatch])
 
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+
+    if ((prevScrollpos < currentScrollPos) && (currentScrollPos > 80)) {
+      document.getElementById("navbar").style.top = "-80px";
+    } else {
+      document.getElementById("navbar").style.top = "0";
+    }
+
+    prevScrollpos = currentScrollPos;
+  }
+
   return (<>
-    <div className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-dropShadow bg-green-main ' >
+    <div id="navbar" className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 duration-500 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-dropShadow bg-green-main' >
       <div className='text-lg min_md:text-xl font-bold text-white whitespace-nowrap sm:text-2xl drop-shadow-textShadow'><Link href="/"><a >INTEX-SHOP.UZ</a></Link></div>
       <div className={`${styles.categoryScroll} hidden xl:flex overflow-x-auto items-center text-xl text-white`}>
         {
@@ -78,7 +91,7 @@ const Header = () => {
            <span className='hover:cursor-pointer hidden xl:inline-block'><Link href={`tel:${baseInfo.phone_number}`}><a className='text-white text-md font-semibold'>{baseInfo.phone_number}</a></Link></span>        
            <div className='flex items-center ml-5 justify-between hover:cursor-pointer'>
            <span className='w-6 h-6 inline-block xl:hidden sm:w-8 sm:h-8 shadow-xl rounded-xl'>
-             <a href={`tel:${baseInfo.phone_number}`} className='inline-block w-full h-full' rel="noreferrer">
+             <a href={`tel:${baseInfo.phone_number}`} className='inline-block w-full hover:scale-110 h-full duration-200' rel="noreferrer">
               <Image 
                 className='hover:cursor-pointer'
                 alt="telegram" 
@@ -92,7 +105,7 @@ const Header = () => {
              </a>
            </span>
           
-           <span className='w-6 h-6 ml-1.5 min_lg:ml-3 sm:w-8 sm:h-8 shadow-xl rounded-xl'>
+           <span className='w-6 h-6 ml-1.5 min_lg:ml-3 sm:w-8 sm:h-8 shadow-xl rounded-xl hover:scale-110 duration-200'>
               <a href={baseInfo.telegram_link} className='w-full h-full inline-block' target="_blank" rel="noreferrer">
                 <Image 
                   className='hover:cursor-pointer'
@@ -107,7 +120,7 @@ const Header = () => {
               </a>
            </span>
            
-           <span className='hidden sm:inline-block w-6 h-6 ml-2.5 sm:w-8 sm:h-8 shadow-xl rounded-xl'>
+           <span className='hidden sm:inline-block w-6 h-6 ml-2.5 sm:w-8 sm:h-8 shadow-xl rounded-xl duration-200 hover:scale-110'>
               <a href={baseInfo.instagram_link} className='inline-block w-full h-full' target="_blank" rel="noreferrer">
                <Image   
                  className='hover:cursor-pointer'
@@ -121,7 +134,7 @@ const Header = () => {
               />
               </a>
            </span>
-          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded bg-white hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 pt-0.5 font-bold w-6 h-6 sm:w-8 sm:h-8 text-green-main' >
+          <div onClick={() => dispatch(changeLang(lang === "UZ" ? "RU" : "UZ"))} className='shadow-xl rounded bg-white hover:cursor-pointer text-center text-sm sm:text-lg ml-1.5 min_lg:ml-3 pt-0.5 font-bold w-6 h-6 sm:w-8 hover:scale-110 duration-200 sm:h-8 text-green-main' >
             {lang === "UZ" ? "RU" : "UZ"}
           </div>
 
