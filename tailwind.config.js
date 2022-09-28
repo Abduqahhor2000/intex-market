@@ -37,8 +37,8 @@ module.exports = {
         labelShadow: '0 1px 6px rgba(0, 0, 0, 0.25)',
         dropShadow: '0 4px 10px rgba(0, 0, 0, 0.25)',
         btnShadow: "0 1px 7px rgba(0, 0, 0, 0.25)",
-        categoryShadow:"0 10px 10px rgba(0, 0, 0, 0.25)",
-        inputShadow:"0 0 14px rgba(0, 0, 0, 0.25)"
+        categoryShadow: "0 10px 10px rgba(0, 0, 0, 0.25)",
+        inputShadow: "0 1px 14px rgba(0, 0, 0, 0.25)",
       },
       dropShadow: {
         textShadow: '0 4px 10px rgb(0 0 0 / 25%)',
