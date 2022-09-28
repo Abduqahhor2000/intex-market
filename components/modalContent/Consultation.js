@@ -161,7 +161,7 @@ function Consultation() {
                     }) => (
                         <form onSubmit={handleSubmit}>
                         <div className="relative">
-                            <input 
+                            <input  
                                 value={name}
                                 onChange={(e) => {setName(e.target.value); handleChange}}
                                 onBlur={handleBlur}

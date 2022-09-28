@@ -175,7 +175,7 @@ function Order({product}) {
                               /* and other goodies */
                             }) => (
                                 <form onSubmit={handleSubmit}>
-                                <div className="relative w-full mt-2">
+                                <div className="relative mt-2">
                                     <input 
                                         value={name}
                                         onChange={(e) => {setName(e.target.value); handleChange}}
@@ -184,12 +184,12 @@ function Order({product}) {
                                         name="name"
                                         autocomplete="off"
                                         required
-                                        className={`peer bg-white outline-none shadow-inputShadow  rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
+                                        className={`peer bg-white outline-none drop-shadow-xl rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                         />
                                     <span className='absolute top-1.5 xl:top-2.5 left-6 text-lg xl:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-base peer-valid:text-base peer-focus:-translate-y-5 peer-valid:-translate-y-5 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                                     <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                                 </div>
-                                <div className="relative mb-6 mt-6 w-full">
+                                <div className="relative mb-6 mt-6">
                                     <input 
                                         value={phoneNumber}
                                         onChange={(e) => {CantrolPhoneNumber(e.target.value); handleChange}}
@@ -206,7 +206,7 @@ function Order({product}) {
                                     <span className={`absolute text-xs xl:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                                 </div>
                                 
-                                <div className="relative w-full mb-6">
+                                <div className="relative mb-6">
                                    <input 
                                        value={address}
                                        onChange={(e) => {setAddress(e.target.value); handleChange}}
