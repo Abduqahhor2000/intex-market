@@ -19,9 +19,7 @@ function Order({product}) {
       let token = '5779678001:AAEpZjxZ-GPkIgmbrt2e8AXr7ZMEwWSOlXE'
       let chatId = '-1001656498217'
       let fullText = 
-      `Name: ${name} n/
-      Phone: ${phoneNumber} n/
-      Address: ${address}`
+      `Name: ${name} %0APhone: ${phoneNumber} %0AAddress: ${address}`
 
       try{
         const data = await axios.post(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${fullText}`)
