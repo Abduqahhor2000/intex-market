@@ -213,7 +213,8 @@ function Order({product}) {
                                         onBlur={handleBlur}
                                         type="text"
                                         name="name"
-                                        autocomplete="off"
+                                        autoComplete="off"
+                                        aria-label={lang === "RU" ? "Ваше имя":"Ismingiz"}
                                         required
                                         className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-lg xl:text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                         />
@@ -228,7 +229,8 @@ function Order({product}) {
                                         onBlur={handleBlur}
                                         name="phoneNumber"
                                         type="text"
-                                        autocomplete="off"
+                                        autoComplete="off"
+                                        aria-label={lang === "RU" ? "Ваш номер":"Raqamingiz"}
                                         maxLength={17}
                                         required
                                         className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-lg xl:text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
@@ -244,7 +246,8 @@ function Order({product}) {
                                        onBlur={handleBlur}
                                        name="address"
                                        type="text"
-                                       autocomplete="off"
+                                       autoComplete="off"
+                                       aria-label={lang === "RU" ? "Ваш адрес":"Manzil"}
                                        required
                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
                                        />

@@ -82,7 +82,7 @@ const Header = () => {
         {
           categories.map(category => {
             return(
-                <div key={category.id} className={`${styles.category} py-1 px-4 rounded-md hover:cursor-pointer font-semibold`}><a className='whitespace-nowrap' href={`#${category.id}`}>{category[`name_${lang.toLowerCase()}`]}</a></div>
+                <div key={category.id} className={`${styles.category} py-1 px-4 rounded-md hover:cursor-pointer font-semibold`}><a className='whitespace-nowrap' href={`#${category.name_uz}`}>{category[`name_${lang.toLowerCase()}`]}</a></div>
             )
           })
         }

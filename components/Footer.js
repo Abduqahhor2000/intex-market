@@ -159,7 +159,8 @@ function Footer() {
                                 onChange={(e) => {setName(e.target.value); handleChange}}
                                 onBlur={handleBlur}
                                 type="text"
-                                autocomplete="off"
+                                autoComplete="off"
+                                aria-label={lang === "RU" ? "Ваше имя":"Ismingiz"}
                                 name="name"
                                 required
                                 className={`peer bg-white outline-none rounded-lg w-full h-10 px-3 text-lg xl:text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`}/>
@@ -174,7 +175,8 @@ function Footer() {
                                 onBlur={handleBlur}
                                 name="phoneNumber"
                                 type="text"
-                                autocomplete="off"
+                                autoComplete="off"
+                                aria-label={lang === "RU" ? "Ваш номер":"Raqamingiz"}
                                 maxLength={17}
                                 required
                                 className={`peer outline-none bg-white rounded-lg w-full h-10 px-3 text-lg xl:text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`}/>
@@ -207,7 +209,7 @@ function Footer() {
                         <Image 
                           className='hover:cursor-pointer' 
                           src="/phone.png" 
-                          alt="" 
+                          alt="phone" 
                           width={60} 
                           height={60}
                           layout={"responsive"}
@@ -228,7 +230,7 @@ function Footer() {
                     <a href={baseInfo.instagram_link} className='inline-block w-10 min_lg:w-14 h-10 min_lg:h-14 mt-1.5 hover:scale-125 duration-200' target="_blank" rel="noreferrer">
                         <Image   
                           className='hover:cursor-pointer'
-                          alt="telegram" 
+                          alt="instagram" 
                           src="/instagram.png"
                           width={60}
                           height={60}

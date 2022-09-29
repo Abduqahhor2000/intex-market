@@ -26,7 +26,7 @@ function Menu({setIsMenuOpen}) {
             categories.map(category => {
               return (
                 <span onClick={() => setIsMenuOpen(false)} key={category.id} className='bg-white w-full rounded-xl text-center text-lg font-bold mb-4 min_sm:mb-7 drop-shadow-lg text-green-main '>
-                  <a className='whitespace-nowrap inline-block w-full h-full py-2 min_sm:py-3.5' href={`#${category.id}`}>{category[`name_${lang.toLowerCase()}`]}</a>
+                  <a className='whitespace-nowrap inline-block w-full h-full py-2 min_sm:py-3.5' href={`#${category.name_uz}`}>{category[`name_${lang.toLowerCase()}`]}</a>
                 </span>
               )
             })

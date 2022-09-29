@@ -168,6 +168,7 @@ function Consultation() {
                                 type="text"
                                 name="name"
                                 autoComplete="off"
+                                aria-label={lang === "RU" ? "Ваше имя":"Ismingiz"}
                                 required
                                 className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl mb-3 md:mb-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
