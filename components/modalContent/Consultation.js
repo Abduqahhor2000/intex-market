@@ -171,7 +171,7 @@ function Consultation() {
                                 required
                                 className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl mb-3 md:mb-5 border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
-                            <span className='absolute top-2 md:top-3 left-6 text-base md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-xs md:peer-focus:text-base peer-valid:text-xs md:peer-valid:text-base peer-focus:-translate-y-4 md:peer-focus:-translate-y-6 peer-valid:-translate-y-4 md:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
+                            <span className='absolute top-2 md:top-3 left-6 text-base md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-150 peer-focus:text-xs md:peer-focus:text-base peer-valid:text-xs md:peer-valid:text-base peer-focus:-translate-y-4 md:peer-focus:-translate-y-6 peer-valid:-translate-y-4 md:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                             <span className={`absolute text-xs md:text-base -translate-y-3.5 md:-translate-y-6 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                         </div>
                         <div className="relative mt-3 w-full">
@@ -188,10 +188,10 @@ function Consultation() {
                                 required
                                 className={`peer bg-white outline-none drop-shadow-lg rounded-2xl w-full h-11 md:h-14 p-5 text-xl md:text-2xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
                                 style={{"boxShadow": "0px 0px 14px 0px rgba(0, 0, 0, 0.05)"}}/>
-                            <span className='absolute top-2 md:top-3 left-6 text-base md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-100 peer-focus:text-xs md:peer-focus:text-base peer-valid:text-xs md:peer-valid:text-base peer-focus:-translate-y-4 md:peer-focus:-translate-y-6 peer-valid:-translate-y-4 md:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
+                            <span className='absolute top-2 md:top-3 left-6 text-base md:text-2xl font-bold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-150 peer-focus:text-xs md:peer-focus:text-base peer-valid:text-xs md:peer-valid:text-base peer-focus:-translate-y-4 md:peer-focus:-translate-y-6 peer-valid:-translate-y-4 md:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                             <span className={`absolute text-xs md:text-base -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                         </div>
-                        <button type="submit" disabled={isSubmitting} className="font-semibold text-lg md:text-2xl hover:cursor-pointer text-center py-1 md:px-5 px-5 rounded-xl flex mt-8 mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>
+                        <button type="submit" disabled={isSubmitting} className="font-semibold text-lg md:text-2xl hover:opacity-60 active:opacity-100 hover:cursor-pointer text-center py-1 pb-1.5 md:pb-2 md:px-5 px-5 rounded-xl flex mt-8 mx-auto" style={{"background" : "rgba(255, 230, 0, 1)"}}>
                           {
                             isLoading ? <div className={styles.loadingiospinnerellipsiszon7txr7fkp}>
                                           <div className={styles.ldiopn062kit6cr}>

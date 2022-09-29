@@ -17,8 +17,11 @@ function Order({product}) {
 
     const sendMessageToTelegram = async () => {
       let token = '5779678001:AAEpZjxZ-GPkIgmbrt2e8AXr7ZMEwWSOlXE'
-      let chatId = '1656498217'
-      let fullText = `name: ${name}, phoneNumber: ${phoneNumber}, address: ${address}`
+      let chatId = '-1001656498217'
+      let fullText = 
+      `Name: ${name} n/
+      Phone: ${phoneNumber} n/
+      Address: ${address}`
 
       try{
         const data = await axios.post(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${fullText}`)
@@ -216,7 +219,7 @@ function Order({product}) {
                                         required
                                         className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-lg xl:text-xl border-x border-b-2 ${errors.name && touched.name ? "border-red-500" : "border-transparent"}`} 
                                         />
-                                    <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
+                                    <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-150 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваше имя":"Ismingiz"}</span>
                                     <span className={`absolute text-xs -translate-y-0.5 left-2 text-red-500 ${errors.name && touched.name  ? "block" : "hidden"}`}>{errors.name && touched.name && errors.name}</span>
                                 </div>
                                 <div className="relative mb-6 mt-6">
@@ -232,7 +235,7 @@ function Order({product}) {
                                         required
                                         className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-lg xl:text-xl border-x border-b-2 ${errors.phoneNumber && touched.phoneNumber ? "border-red-500" : "border-transparent"}`} 
                                         />
-                                    <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
+                                    <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-150 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш номер":"Raqamingiz"}</span>    
                                     <span className={`absolute text-xs -translate-y-0.5 left-2 text-red-500 ${errors.phoneNumber && touched.phoneNumber  ? "block" : "hidden"}`}>{errors.phoneNumber && touched.phoneNumber && errors.phoneNumber}</span>
                                 </div>
                                 
@@ -247,10 +250,10 @@ function Order({product}) {
                                        required
                                        className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${errors.address && touched.address  ? "border-red-500" : "border-transparent"}`} 
                                        />
-                                   <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-200 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
+                                   <span className='absolute top-2 xl:top-3 left-6 text-base xl:text-xl font-semibold pointer-events-none text-gray-400 peer-focus:text-green-brand peer-valid:text-green-brand duration-150 peer-focus:text-sm peer-valid:text-sm peer-focus:-translate-y-5 peer-valid:-translate-y-5 xl:peer-focus:-translate-y-6 xl:peer-valid:-translate-y-6 peer-focus:-translate-x-3 peer-valid:-translate-x-3'>{lang === "RU" ? "Ваш адрес":"Manzil"}</span>        
                                    <span className={`absolute text-xs -translate-y-0.5 left-2 text-red-500 ${errors.address && touched.address  ? "block" : "hidden"}`}>{errors.address && touched.address && errors.address}</span>
                                 </div>
-                                <button type="submit" disabled={isSubmitting} className="font-semibold text-base xl:text-xl hover:cursor-pointer text-center pt-1 pb-1.5 xl:pt-1.5 xl:pb-2 px-5 rounded-oformit flex mx-auto shadow-dropShadow  bg-yellow-btn " >
+                                <button type="submit" disabled={isSubmitting} className="font-semibold text-base hover:opacity-60 active:opacity-100 xl:text-xl hover:cursor-pointer text-center pt-1 pb-1.5 xl:pt-1.5 xl:pb-2 px-5 rounded-oformit flex mx-auto shadow-dropShadow bg-yellow-btn" >
                                     {
                                       isLoading ? <div className={styles.loadingiospinnerellipsiszon7txr7fkp}>
                                                     <div className={styles.ldiopn062kit6cr}>

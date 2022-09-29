@@ -36,11 +36,11 @@ module.exports = {
         cardShadow: '0 5px 10px rgba(0, 0, 0, 0.25)',
         labelShadow: '0 1px 6px rgba(0, 0, 0, 0.25)',
         dropShadow: '0 4px 10px rgba(0, 0, 0, 0.25)',
-        btnShadow: "0 1px 7px rgba(0, 0, 0, 0.25)",
-        categoryShadow: "0 10px 10px rgba(0, 0, 0, 0.25)",
+        btnShadow: '0 1px 7px rgba(0, 0, 0, 0.25)',
+        categoryShadow: '0 10px 10px rgba(0, 0, 0, 0.25)',
       },
       dropShadow: {
-        inputShadow: "0 0 4px rgba(0, 0, 0, 0.25)",
+        inputShadow: '0 0 4px rgba(0, 0, 0, 0.25)',
         textShadow: '0 4px 10px rgb(0 0 0 / 25%)',
       },
       width: {

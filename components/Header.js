@@ -62,18 +62,18 @@ const Header = () => {
     getBaseInfo()
   }, [dispatch])
 
-  let prevScrollpos = window.pageYOffset;
-  window.onscroll = function() {
-    let currentScrollPos = window.pageYOffset;
+  // let prevScrollpos = window.pageYOffset;
+  // window.onscroll = function() {
+  //   let currentScrollPos = window.pageYOffset;
 
-    if ((prevScrollpos < currentScrollPos) && (currentScrollPos > 80)) {
-      document.getElementById("navbar").style.top = "-80px";
-    } else {
-      document.getElementById("navbar").style.top = "0";
-    }
+  //   if ((prevScrollpos < currentScrollPos) && (currentScrollPos > 80)) {
+  //     document.getElementById("navbar").style.top = "-80px";
+  //   } else {
+  //     document.getElementById("navbar").style.top = "0";
+  //   }
 
-    prevScrollpos = currentScrollPos;
-  }
+  //   prevScrollpos = currentScrollPos;
+  // }
 
   return (<>
     <div id="navbar" className='h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 duration-500 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-dropShadow bg-green-main' >
