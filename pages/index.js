@@ -8,7 +8,7 @@ export default function Home() {
     <div className="">
       <Head>
         <html lang="uz"/>
-        <title>Intex Market</title>
+        <title>Intex Shop</title>
         <meta name="description" content="intex-shop.uz, basseyin sotuvlari" />
         <meta name="google-site-verification" content="Unj3YncAX9bahdNokLwauDi1z_7gK9_OM1AQFh3WOaI" />
         <link rel="icon" type="image" href="/miniLogo.png"/>
