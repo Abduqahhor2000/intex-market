@@ -39,7 +39,7 @@ function Section({category}) {
             <div id={category.name_uz} className="w-full absolute -top-12 min_md:-top-20 min_lg:-top-20 duration-300"></div>
             {category[`name_${lang.toLowerCase()}`]}
         </div>
-        <div className='flex justify-center flex-wrap h-auto my-4 sm:mb-20 mx-auto bg-gray-bg max-w-6xl'>
+        <div className='flex justify-center flex-wrap h-auto my-4 sm:mb-20 mx-auto bg-gray-bg max-w-[1500px]'>
             {
                 products.map(product => {
                     if(product.category_id !== category.id){
