@@ -46,7 +46,7 @@ function Modal(props) {
                     duration: 0.1,
                 }
               }}
-            className="fixed top-0 left-0 w-fit h-fit right-0 bottom-0 z-10 bg-lighter-01 m-auto rounded-2xl"
+            className="fixed w-fit h-fit z-10 bg-lighter-01 m-auto inset-0 rounded-2xl"
         >
             <motion.div
                 initial={{
