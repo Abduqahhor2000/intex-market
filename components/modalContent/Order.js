@@ -151,12 +151,12 @@ function Order({ product }) {
             </div>
 
             <div className="text-4xl xl:text-6xl font-bold mb-6 xl:mb-10">
-              {lang === "RU" ? "Спасибо!" : "Rahmat!"}
+              {lang === "RU" ? "Ошибка!" : "Xatolik!"}
             </div>
             <div className="text-lg text-center xl:text-2xl mb-0 xl:mb-16">
               {lang === "RU"
-                ? "Ваш заказ успешно оформлен. Мь свяжемся с вами в ближайшее время."
-                : "Buyurtmangiz muvaffaqiyatli joylashtirildi. Tez orada siz bilan bog'lanamiz."}
+                ? "При сохранении вашего заказа произошла ошибка. Пожалуйста, попробуйте еще раз!"
+                : "Buyurtmangizni saqlashda xatolik yuz berdi. Iltimos qayta urunib ko'ring!"}
             </div>
           </div>
         </>

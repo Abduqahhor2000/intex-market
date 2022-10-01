@@ -4,6 +4,7 @@ import Image from 'next/image'
 import {useSelector} from "react-redux"
 import { Formik } from 'formik';
 import styles from "../../styles/Home.module.css"
+import errorWebp from "../../public/error.webp";
 
 function Consultation() {
     const lang = useSelector(state => state.intex.market.lang)
@@ -111,7 +112,27 @@ function Consultation() {
                 </div>
             </> :
             response === false ? <>
-                Error
+               <div className='flex flex-col items-center w-full'>
+                    <div className="w-28 h-28 xl:w-60 xl:h-60 mb-10">
+              <Image
+                src={errorWebp}
+                alt=""
+                objectFit="contain"
+                layout="responsive"
+                width={1}
+                height={1}
+              />
+            </div>
+
+            <div className="text-4xl xl:text-6xl font-bold mb-6">
+              {lang === "RU" ? "Ошибка!" : "Xatolik!"}
+            </div>
+            <div className="text-lg text-center xl:text-2xl">
+              {lang === "RU"
+                ? "При сохранении вашего заказа произошла ошибка. Пожалуйста, попробуйте еще раз!"
+                : "Buyurtmangizni saqlashda xatolik yuz berdi. Iltimos qayta urunib ko'ring!"}
+            </div>
+          </div>
             </> : 
             <>
                 <div 
