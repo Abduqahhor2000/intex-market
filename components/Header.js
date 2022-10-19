@@ -96,7 +96,7 @@ const Header = () => {
     <>
       <div
         id="navbar"
-        className="h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 duration-500 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-dropShadow bg-green-main"
+        className="h-12 min_md:h-16 min_lg:h-20 w-screen px-2 min_md:px-4 min_lg:px-5 sm:px-10 xl:px-16 flex justify-between items-center fixed z-10 shadow-dropShadow bg-green-main"
       >
         <div className="text-lg min_md:text-xl font-bold text-white whitespace-nowrap sm:text-2xl drop-shadow-textShadow">
           <Link href="/">

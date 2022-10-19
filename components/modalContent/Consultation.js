@@ -188,6 +188,7 @@ function Consultation() {
                                 onBlur={handleBlur}
                                 type="text"
                                 name="name"
+                                maxLength={30}
                                 autoComplete="off"
                                 aria-label={lang === "RU" ? "Ваше имя":"Ismingiz"}
                                 required

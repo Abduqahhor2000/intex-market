@@ -49,7 +49,7 @@ function Mean() {
     }, [consul])
 
   return (
-    <div className='bg-gray-bg'>
+    <div className='bg-gray-bg w-screen'>
         {
             categories.length && products.length ? <>
                     {categories.map(category => {

@@ -252,6 +252,7 @@ function Order({ product }) {
                         onBlur={handleBlur}
                         type="text"
                         name="name"
+                        maxLength={30}
                         autoComplete="off"
                         aria-label={lang === "RU" ? "Ваше имя" : "Ismingiz"}
                         required
@@ -320,6 +321,7 @@ function Order({ product }) {
                         name="address"
                         type="text"
                         autoComplete="off"
+                        maxLength={100}
                         aria-label={lang === "RU" ? "Ваш адрес" : "Manzil"}
                         required
                         className={`peer bg-white outline-none drop-shadow-inputShadow rounded-2xl w-full xl:w-80 h-11 xl:h-14 p-5 text-xl xl:text-2xl border-x border-b-2 ${

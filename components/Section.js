@@ -36,7 +36,7 @@ function Section({category}) {
   return (
     <>
         <div className='relative text-center text-2xl sm:text-4xl md:text-5xl text-white font-bold py-1.5 sm:py-5 h-12 sm:h-24 mb-1 sm:mb-20 bg-green-main shadow-categoryShadow '>
-            <div id={category.name_uz} className="w-full absolute -top-12 min_md:-top-20 min_lg:-top-20 duration-300"></div>
+            <div id={category.name_uz} className="w-full absolute -top-[46px] min_md:-top-[64px] min_lg:-top-[78px] duration-300"></div>
             {category[`name_${lang.toLowerCase()}`]}
         </div>
         <div className='flex justify-center flex-wrap h-auto my-4 sm:mb-20 mx-auto bg-gray-bg max-w-[1500px]'>

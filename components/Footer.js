@@ -195,6 +195,7 @@ function Footer() {
                     }}
                     onBlur={handleBlur}
                     type="text"
+                    maxLength={30}
                     autoComplete="off"
                     aria-label={lang === "RU" ? "Ваше имя" : "Ismingiz"}
                     name="name"
