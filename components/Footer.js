@@ -40,6 +40,8 @@ function Footer() {
   const [isLoading, setIsLoading] = useState(false);
 
   const createConsul = async () => {
+    if(isLoading) {return}
+    
     setIsLoading(true);
     try {
       await https({
