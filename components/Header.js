@@ -202,7 +202,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-auto pt-12 min_md:pt-16 min_lg:pt-20 ">
+      <div className="w-screen h-auto pt-12 min_md:pt-16 min_lg:pt-20 ">
         <Image
           layout="responsive"
           height={2}
